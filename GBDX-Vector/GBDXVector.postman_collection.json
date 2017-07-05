@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "GBDX Vector",
-		"_postman_id": "f388cfb4-0585-dbe1-b3ce-0fcb50ac93e0",
+		"_postman_id": "d6c88056-2b7d-7875-45d9-bcdaff7f9005",
 		"description": "API calls associated with the GBDX vector capabilities.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -23,10 +23,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Performs aggregations on a document set within the given bounding box. Basic call, with no optional parameters."
 					},
 					"response": []
@@ -43,10 +40,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Performs aggregations on a document set within the given bounding box. Using all optional parameters; ISO-8601 date range."
 					},
 					"response": []
@@ -63,10 +57,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Performs aggregations on a document set within the given bounding box. Grouped aggregation of cardinality and terms; \"now\" date range."
 					},
 					"response": []
@@ -120,20 +111,17 @@
 								{
 									"key": "grant_type",
 									"value": "password",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								},
 								{
 									"key": "username",
 									"value": "{{username}}",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "{{password}}",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -153,31 +141,8 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Groups",
-					"request": {
-						"url": "https://vector.geobigdata.io/insight-vector/api/accounts/groups",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": "Provides a listing of available system roles and their IDs for use in setting the \"access.groups\" value when uploading items."
 					},
 					"response": []
 				},
@@ -193,10 +158,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the current status of the user, including things like the user's current role, download limits, current usage info, etc."
 					},
 					"response": []
@@ -219,10 +181,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List the available vector geometry(ies) for a given query term and bounding box. Not required for other query calls."
 					},
 					"response": []
@@ -239,10 +198,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List the available vector type(s) for a given geometry, query term, and bounding box. Not required for other query calls."
 					},
 					"response": []
@@ -259,10 +215,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Submit request for paging ID to be used for subsequent paging requests. Call based on geometry, vector type, and query."
 					},
 					"response": []
@@ -285,8 +238,7 @@
 								{
 									"key": "pagingId",
 									"value": "Copy the pagingId from Get Paging ID here - no quotes",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -312,10 +264,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the available vector index ingestion sources for a given bounding box."
 					},
 					"response": []
@@ -332,10 +281,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the available vector geometry(ies) for a given vector index ingestion source and bounding box."
 					},
 					"response": []
@@ -352,10 +298,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the available vector type(s) for a given geometry, vector index ingestion source, and bounding box."
 					},
 					"response": []
@@ -372,10 +315,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Submit request for paging ID to be used for subsequent paging requests. Call based on source, geometry, and vector type."
 					},
 					"response": []
@@ -398,8 +338,7 @@
 								{
 									"key": "pagingId",
 									"value": "Copy the pagingId from Get Paging ID here - no quotes",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -425,10 +364,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List the available vector geometry(ies) for a given query term and bounding box. Not required for other query calls."
 					},
 					"response": []
@@ -445,10 +381,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List the available vector type(s) for a given geometry, query term, and bounding box. Not required for other query calls."
 					},
 					"response": []
@@ -465,10 +398,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List the available vector item(s) for a given geometry, vector type, query term, and bounding box. Fields being returned must be included."
 					},
 					"response": []
@@ -491,10 +421,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the available vector index ingestion sources for a given bounding box."
 					},
 					"response": []
@@ -511,10 +438,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the available vector geometry(ies) for a given vector index ingestion source and bounding box."
 					},
 					"response": []
@@ -531,10 +455,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the available vector type(s) for a given geometry, vector index ingestion source, and bounding box."
 					},
 					"response": []
@@ -551,10 +472,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the available vector item(s) for a given vector type, geometry, vector index ingestion source, and bounding box. Returns the default fields. Use this or List Vector Items (Selected Fields). *Restricted to 1000 items; calls returning more than 1000 vector items should use paging."
 					},
 					"response": []
@@ -571,10 +489,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the available vector item(s) for a given vector type, geometry, vector index ingestion source, and bounding box. Returns the selected fields. Use this or List Vector Items (Default). *Restricted to 1000 items; calls returning more than 1000 vector items should use paging."
 					},
 					"response": []
@@ -602,10 +517,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Submit a GET request to retrieve InsightCloud UVI field list for facets queries."
 					},
 					"response": []
@@ -622,10 +534,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Global facet search, using the \"now\" term with simple math to span 2 days."
 					},
 					"response": []
@@ -642,10 +551,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Facet search over Syria, using combination \"now\" term and ISO-8601 datetime."
 					},
 					"response": []
@@ -662,10 +568,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Facet search over Washington, DC, not using any daterange restriction."
 					},
 					"response": []
@@ -682,10 +585,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Facet search over Syria, using ISO-8601 datetime."
 					},
 					"response": []
@@ -702,10 +602,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Submit request for paging ID to be used for subsequent paging requests. Call based on geometry, vector type, and facet query."
 					},
 					"response": []
@@ -728,8 +625,7 @@
 								{
 									"key": "pagingId",
 									"value": "Copy the pagingId from Get Paging ID here - no quotes",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -749,10 +645,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Submit request for paging ID to be used for subsequent paging requests. Call based on facet query term."
 					},
 					"response": []
@@ -775,8 +668,7 @@
 								{
 									"key": "pagingId",
 									"value": "Copy the pagingId from Get Paging ID here - no quotes",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -802,10 +694,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Download vector items for a given vector type and query term. To receive human-readable result, copy url (with correct environment) into separate browser tab and send request through browser."
 					},
 					"response": []
@@ -822,10 +711,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Download vector items for a given vector ingestion source and vector type. To receive human-readable result, copy url (with correct environment) into separate browser tab and send request through browser."
 					},
 					"response": []
@@ -842,11 +728,205 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Download vector items for a given query term. To receive human-readable result, copy url (with correct environment) into separate browser tab and send request through browser."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VS Index Querying",
+			"description": "Query over specified index, if the index is known, to make calls faster.",
+			"item": [
+				{
+					"name": "Aggregation in index by bounding box",
+					"request": {
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/aggregation/:index?aggs=terms:ingest_source&query=item_type:\\\"Underwater Reef\\\"&left=-180&right=180&upper=90&lower=-90&startDate=now-3M&endDate=now&count=10",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"aggregation",
+								":index"
+							],
+							"query": [
+								{
+									"key": "aggs",
+									"value": "terms:ingest_source"
+								},
+								{
+									"key": "query",
+									"value": "item_type:\\\"Underwater Reef\\\""
+								},
+								{
+									"key": "left",
+									"value": "-180"
+								},
+								{
+									"key": "right",
+									"value": "180"
+								},
+								{
+									"key": "upper",
+									"value": "90"
+								},
+								{
+									"key": "lower",
+									"value": "-90"
+								},
+								{
+									"key": "startDate",
+									"value": "now-3M"
+								},
+								{
+									"key": "endDate",
+									"value": "now"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"value": "vector-web-s",
+									"id": "index"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {}
+					},
+					"response": []
+				},
+				{
+					"name": "Get items from index for shape",
+					"request": {
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items?q=attributes.latitude:1",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"items"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "attributes.latitude:1"
+								}
+							],
+							"variable": [
+								{
+									"value": "vector-web-s",
+									"id": "index"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"coordinates\": [\n      [\n        [\n          0,\n          0\n        ],\n        [\n          0,\n          4\n        ],\n        [\n          4,\n          4\n        ],\n        [\n          4,\n          0\n        ],\n        [\n          0,\n          0\n        ]\n      ]\n    ],\n    \"type\": \"Polygon\"\n  }"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get items from index for query",
+					"request": {
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items?q=item_type:OilTank&left=-180&right=180&upper=90&lower=-90&count=100",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"items"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "item_type:OilTank"
+								},
+								{
+									"key": "left",
+									"value": "-180"
+								},
+								{
+									"key": "right",
+									"value": "180"
+								},
+								{
+									"key": "upper",
+									"value": "90"
+								},
+								{
+									"key": "lower",
+									"value": "-90"
+								},
+								{
+									"key": "count",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"value": "vector-oiltanks-20170109",
+									"id": "index"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {}
 					},
 					"response": []
 				}
@@ -868,10 +948,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Submit request for paging ID to be used for subsequent paging requests. Call based on query term."
 					},
 					"response": []
@@ -894,8 +971,7 @@
 								{
 									"key": "pagingId",
 									"value": "Copy the pagingId from Get Paging ID here - no quotes",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -921,10 +997,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List available vector types for a given query term."
 					},
 					"response": []
@@ -941,10 +1014,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Submit request for paging ID to be used for subsequent paging requests. Call based on vector type and query term."
 					},
 					"response": []
@@ -967,8 +1037,7 @@
 								{
 									"key": "pagingId",
 									"value": "Copy the pagingId from Get Paging ID here - no quotes",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -994,10 +1063,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the available vector index ingestion sources for a given bounding box."
 					},
 					"response": []
@@ -1014,10 +1080,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List all available vector types for a given ingestion source and bounding box."
 					},
 					"response": []
@@ -1034,10 +1097,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Submit request for paging ID to be used for subsequent paging requests."
 					},
 					"response": []
@@ -1060,8 +1120,7 @@
 								{
 									"key": "pagingId",
 									"value": "Copy the pagingId from Get Paging ID here - no quotes",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -1087,10 +1146,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List available vector items for a given query term. Returns the default fields. Use this or List Vector Items (Selected Fields)."
 					},
 					"response": []
@@ -1107,10 +1163,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List available vector items for a given query term. Returns the selected fields. Use this or List Vector Items (Default Fields)."
 					},
 					"response": []
@@ -1133,10 +1186,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List available vector types for a given query term."
 					},
 					"response": []
@@ -1153,10 +1203,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List available vector items for a given vector type and query term."
 					},
 					"response": []
@@ -1173,10 +1220,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List available vector items for a given vector type and query term."
 					},
 					"response": []
@@ -1280,8 +1324,7 @@
 								{
 									"key": "pagingId",
 									"value": "Copy the pagingId from Get Paging ID here - no quotes",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -1338,8 +1381,7 @@
 								{
 									"key": "pagingId",
 									"value": "Copy the pagingId from Get Paging ID here - no quotes",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -1471,8 +1513,7 @@
 								{
 									"key": "pagingId",
 									"value": "Copy the pagingId from Get Paging ID here - no quotes",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -1529,10 +1570,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Lists the available vector index ingestion sources for a given bounding box."
 					},
 					"response": []
@@ -1549,10 +1587,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List all available vector types for a given ingestion source and bounding box."
 					},
 					"response": []
@@ -1569,11 +1604,473 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "List all available vector items for a given ingestion source, vector item type, and bounding box. *Restricted to 1000 items; calls returning more than 1000 vector items should use paging."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Web Query Index",
+			"description": "",
+			"item": [
+				{
+					"name": "Aggregation in index by bounding box",
+					"request": {
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/aggregation/:index?aggs=terms:item_type&query=item_type.analyzed:building&left=-80&right=-76&upper=39&lower=36&startDate=now-3y&endDate=now&count=10",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"aggregation",
+								":index"
+							],
+							"query": [
+								{
+									"key": "aggs",
+									"value": "terms:item_type",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "query",
+									"value": "item_type.analyzed:building",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "left",
+									"value": "-80",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "right",
+									"value": "-76",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "upper",
+									"value": "39",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "lower",
+									"value": "36",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "startDate",
+									"value": "now-3y",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "endDate",
+									"value": "now",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "count",
+									"value": "10",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": [
+								{
+									"description": "",
+									"key": "index",
+									"value": "vector-osm-*"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {}
+					},
+					"response": []
+				},
+				{
+					"name": "Get items from index for shape",
+					"request": {
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items?q=summer",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"items"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "summer",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": [
+								{
+									"description": "",
+									"key": "index",
+									"value": "vector-sma-twitter*"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"coordinates\": [\n      [\n         [\n           -77,\n           38\n         ],\n         [\n           -77,\n           39\n         ],\n         [\n           -76,\n           39\n         ],\n         [\n           -76,\n           38\n         ],\n         [\n           -77,\n           38\n         ]\n       ]\n    ],\n    \"type\": \"Polygon\"\n  }"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get items from index for query",
+					"request": {
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items?q=item_type:Landsat8 AND item_date:[now-2M TO now]&left=-80&right=76&upper=40&lower=36&count=10",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"items"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "item_type:Landsat8 AND item_date:[now-2M TO now]",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "left",
+									"value": "-80",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "right",
+									"value": "76",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "upper",
+									"value": "40",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "lower",
+									"value": "36",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "count",
+									"value": "10",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": [
+								{
+									"description": "",
+									"key": "index",
+									"value": "vector-gbdx-alpha-catalog-v2*"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {}
+					},
+					"response": []
+				},
+				{
+					"name": "Get item fields from index for query",
+					"request": {
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items/:fields?q=test&left=0&right=50&upper=50&lower=0&count=10",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"items",
+								":fields"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "test",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "left",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "right",
+									"value": "50",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "upper",
+									"value": "50",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "lower",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "count",
+									"value": "10",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": [
+								{
+									"description": "",
+									"key": "index",
+									"value": "vector-sma-twitter*"
+								},
+								{
+									"description": "",
+									"key": "fields",
+									"value": "id,item_date"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {}
+					},
+					"response": []
+				},
+				{
+					"name": "Initiate paging query from index for query",
+					"request": {
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/paging?q=test&left=0&right=50&upper=50&lower=0&ttl=5m&count=10",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"paging"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "test",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "left",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "right",
+									"value": "50",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "upper",
+									"value": "50",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "lower",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "ttl",
+									"value": "5m",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "count",
+									"value": "10",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": [
+								{
+									"description": "",
+									"key": "index",
+									"value": "vector-sma-twitter*"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {}
+					},
+					"response": []
+				},
+				{
+					"name": "Start Paging Session by index for Shape",
+					"request": {
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/paging?q=summer&ttl=5m&count=10",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"paging"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "summer",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "ttl",
+									"value": "5m",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "count",
+									"value": "10",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": [
+								{
+									"description": "",
+									"key": "index",
+									"value": "vector-sma-twitter*"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"coordinates\": [\n      [\n         [\n           -77,\n           38\n         ],\n         [\n           -77,\n           39\n         ],\n         [\n           -76,\n           39\n         ],\n         [\n           -76,\n           38\n         ],\n         [\n           -77,\n           38\n         ]\n       ]\n    ],\n    \"type\": \"Polygon\"\n  }"
+						}
 					},
 					"response": []
 				}
@@ -1700,10 +2197,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": "Submit a GET request to retrieve InsightCloud UVI information for retrieving a vector."
 					},
 					"response": []
