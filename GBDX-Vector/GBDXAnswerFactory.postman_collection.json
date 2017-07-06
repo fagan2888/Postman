@@ -1,12 +1,175 @@
 {
 	"variables": [],
 	"info": {
-		"name": "GBDX AnswerFactory",
-		"_postman_id": "3dabfe86-4de9-9d55-ed75-7486822c6d25",
+		"name": "AnswerFactory",
+		"_postman_id": "cafa84a6-d8d0-9e31-6e61-7ca1671804dd",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Accounts",
+			"description": "",
+			"item": [
+				{
+					"name": "Account Type",
+					"request": {
+						"url": {
+							"raw": "{{environment}}/answer-factory-account-service/api/account/:type",
+							"host": [
+								"{{environment}}"
+							],
+							"path": [
+								"answer-factory-account-service",
+								"api",
+								"account",
+								":type"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "type",
+									"value": "AAA"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"acquisitionIds\": [ \"101001000547F800\" , \"Potato\" , \"Sasquatch\" , \"104A01000C836B00\" , \"1030010003A3D500\" ] }"
+						},
+						"description": "Gets current users account of specified type (for the esri pilot this type=AAA). Note, even with a SuperUser, this will *only* get the current account."
+					},
+					"response": []
+				},
+				{
+					"name": "Account Type (SuperUsers only)",
+					"request": {
+						"url": {
+							"raw": "{{environment}}/answer-factory-account-service/api/account/:type/:accountId",
+							"host": [
+								"{{environment}}"
+							],
+							"path": [
+								"answer-factory-account-service",
+								"api",
+								"account",
+								":type",
+								":accountId"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "accountId",
+									"value": ""
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"acquisitionIds\": [ \"101001000547F800\" , \"Potato\" , \"Sasquatch\" , \"104A01000C836B00\" , \"1030010003A3D500\" ] }"
+						},
+						"description": "Gets current users account of specified type; only accessible to super users."
+					},
+					"response": []
+				},
+				{
+					"name": "Account Information (SuperUsers only)",
+					"request": {
+						"url": {
+							"raw": "{{environment}}/answer-factory-account-service/api/accounts?accountId={}&id={}&type={}",
+							"host": [
+								"{{environment}}"
+							],
+							"path": [
+								"answer-factory-account-service",
+								"api",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "accountId",
+									"value": "{}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "id",
+									"value": "{}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "type",
+									"value": "{}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"acquisitionIds\": [ \"101001000547F800\" , \"Potato\" , \"Sasquatch\" , \"104A01000C836B00\" , \"1030010003A3D500\" ] }"
+						},
+						"description": "Requires at least one of those params not necessarily all, only accessible to super users."
+					},
+					"response": []
+				},
+				{
+					"name": "Add Account (SuperUsers only)",
+					"request": {
+						"url": "{{environment}}/answer-factory-account-service/api/account",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"TEST_testidthingie\",\n    \"accountId\": \"1ts4n0ts0l0nguu1d\",\n    \"type\": \"AAA\",\n    \"properties\": {\n        \"limit_sqkm\": \"500\",\n        \"limit_analytics\": \"200\"\n    }\n}"
+						},
+						"description": "Stores a new account object, only accessible to super users."
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "AnswerFactory Feedback",
 			"description": "",
@@ -14,7 +177,7 @@
 				{
 					"name": "Send new recipe suggestion",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/feedback/new_recipe",
+						"url": "{{environment}}/answer-factory-recipe-service/api/feedback/new_recipe",
 						"method": "POST",
 						"header": [
 							{
@@ -46,12 +209,9 @@
 					"name": "Retrieve tag list for project and recipe",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/tags/:project_id/:recipe_id",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -63,14 +223,12 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "project_id",
-									"value": "1234567890"
+									"value": "1234567890",
+									"id": "project_id"
 								},
 								{
-									"description": "",
-									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "my-recipe",
+									"id": "recipe_id"
 								}
 							]
 						},
@@ -96,12 +254,9 @@
 					"name": "Retrieve tag list for project",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/tags/:project_id",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -112,9 +267,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "project_id",
-									"value": "1234567890"
+									"value": "1234567890",
+									"id": "project_id"
 								}
 							]
 						},
@@ -140,12 +294,9 @@
 					"name": "Delete item tag from cell",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name/:item_id",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name/:item_id",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -161,34 +312,28 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "project_id",
-									"value": "1234567890"
+									"value": "1234567890",
+									"id": "project_id"
 								},
 								{
-									"description": "",
-									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "my-recipe",
+									"id": "recipe_id"
 								},
 								{
-									"description": "",
-									"key": "row_id",
-									"value": "654321"
+									"value": "654321",
+									"id": "row_id"
 								},
 								{
-									"description": "",
-									"key": "column_id",
-									"value": "7890"
+									"value": "7890",
+									"id": "column_id"
 								},
 								{
-									"description": "",
-									"key": "tag_name",
-									"value": "foo"
+									"value": "foo",
+									"id": "tag_name"
 								},
 								{
-									"description": "",
-									"key": "item_id",
-									"value": "vector-123456"
+									"value": "vector-123456",
+									"id": "item_id"
 								}
 							]
 						},
@@ -209,12 +354,9 @@
 					"name": "Retrieve all tags with items for cell",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -228,24 +370,20 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "project_id",
-									"value": "1234567890"
+									"value": "1234567890",
+									"id": "project_id"
 								},
 								{
-									"description": "",
-									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "my-recipe",
+									"id": "recipe_id"
 								},
 								{
-									"description": "",
-									"key": "row_id",
-									"value": "654321"
+									"value": "654321",
+									"id": "row_id"
 								},
 								{
-									"description": "",
-									"key": "column_id",
-									"value": "7890"
+									"value": "7890",
+									"id": "column_id"
 								}
 							]
 						},
@@ -271,12 +409,9 @@
 					"name": "Retrieve items for cell tag",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -291,29 +426,24 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "project_id",
-									"value": "1234567890"
+									"value": "1234567890",
+									"id": "project_id"
 								},
 								{
-									"description": "",
-									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "my-recipe",
+									"id": "recipe_id"
 								},
 								{
-									"description": "",
-									"key": "row_id",
-									"value": ""
+									"value": "",
+									"id": "row_id"
 								},
 								{
-									"description": "",
-									"key": "column_id",
-									"value": ""
+									"value": "",
+									"id": "column_id"
 								},
 								{
-									"description": "",
-									"key": "tag_name",
-									"value": ""
+									"value": "",
+									"id": "tag_name"
 								}
 							]
 						},
@@ -339,12 +469,9 @@
 					"name": "Tag item in cell",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name/:item_id",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name/:item_id",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -360,34 +487,28 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "project_id",
-									"value": "1234567890"
+									"value": "1234567890",
+									"id": "project_id"
 								},
 								{
-									"description": "",
-									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "my-recipe",
+									"id": "recipe_id"
 								},
 								{
-									"description": "",
-									"key": "row_id",
-									"value": "654321"
+									"value": "654321",
+									"id": "row_id"
 								},
 								{
-									"description": "",
-									"key": "column_id",
-									"value": "7890"
+									"value": "7890",
+									"id": "column_id"
 								},
 								{
-									"description": "",
-									"key": "tag_name",
-									"value": "foo"
+									"value": "foo",
+									"id": "tag_name"
 								},
 								{
-									"description": "",
-									"key": "item_id",
-									"value": "vector-123456"
+									"value": "vector-123456",
+									"id": "item_id"
 								}
 							]
 						},
@@ -408,12 +529,9 @@
 					"name": "Save cell tag",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -428,29 +546,24 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "project_id",
-									"value": "1234567890"
+									"value": "1234567890",
+									"id": "project_id"
 								},
 								{
-									"description": "",
-									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "my-recipe",
+									"id": "recipe_id"
 								},
 								{
-									"description": "",
-									"key": "row_id",
-									"value": "654321"
+									"value": "654321",
+									"id": "row_id"
 								},
 								{
-									"description": "",
-									"key": "column_id",
-									"value": "7890"
+									"value": "7890",
+									"id": "column_id"
 								},
 								{
-									"description": "",
-									"key": "tag_name",
-									"value": "foo"
+									"value": "foo",
+									"id": "tag_name"
 								}
 							]
 						},
@@ -477,12 +590,9 @@
 					"name": "Retrieve Answer",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/answer/cell/:projectId/:recipeId/:rowId/:columnId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/answer/cell/:projectId/:recipeId/:rowId/:columnId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -497,24 +607,20 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
+									"value": "",
+									"id": "projectId"
 								},
 								{
-									"description": "",
-									"key": "recipeId",
-									"value": ""
+									"value": "",
+									"id": "recipeId"
 								},
 								{
-									"description": "",
-									"key": "rowId",
-									"value": ""
+									"value": "",
+									"id": "rowId"
 								},
 								{
-									"description": "",
-									"key": "columnId",
-									"value": ""
+									"value": "",
+									"id": "columnId"
 								}
 							]
 						},
@@ -540,12 +646,9 @@
 					"name": "Retrieve Entire Answer",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/answer/entire/cell/:projectId/:recipeId/:rowId/:columnId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/answer/entire/cell/:projectId/:recipeId/:rowId/:columnId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -561,24 +664,20 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
+									"value": "",
+									"id": "projectId"
 								},
 								{
-									"description": "",
-									"key": "recipeId",
-									"value": ""
+									"value": "",
+									"id": "recipeId"
 								},
 								{
-									"description": "",
-									"key": "rowId",
-									"value": ""
+									"value": "",
+									"id": "rowId"
 								},
 								{
-									"description": "",
-									"key": "columnId",
-									"value": ""
+									"value": "",
+									"id": "columnId"
 								}
 							]
 						},
@@ -604,12 +703,9 @@
 					"name": "Retrieve Answer IDAHO Images",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/answer/cell/:projectId/:recipeId/:rowId/:columnId/idahoImages",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/answer/cell/:projectId/:recipeId/:rowId/:columnId/idahoImages",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -625,24 +721,20 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
+									"value": "",
+									"id": "projectId"
 								},
 								{
-									"description": "",
-									"key": "recipeId",
-									"value": ""
+									"value": "",
+									"id": "recipeId"
 								},
 								{
-									"description": "",
-									"key": "rowId",
-									"value": ""
+									"value": "",
+									"id": "rowId"
 								},
 								{
-									"description": "",
-									"key": "columnId",
-									"value": ""
+									"value": "",
+									"id": "columnId"
 								}
 							]
 						},
@@ -668,12 +760,9 @@
 					"name": "Retrieve Answer Status",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/status/:projectId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/recipe/status/:projectId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -685,9 +774,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
+									"value": "",
+									"id": "projectId"
 								}
 							]
 						},
@@ -713,12 +801,9 @@
 					"name": "Retrieve Answer Table",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/answer/table/:projectId/:recipeId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/answer/table/:projectId/:recipeId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -731,14 +816,12 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
+									"value": "",
+									"id": "projectId"
 								},
 								{
-									"description": "",
-									"key": "recipeId",
-									"value": ""
+									"value": "",
+									"id": "recipeId"
 								}
 							]
 						},
@@ -764,12 +847,9 @@
 					"name": "Retrieve Answer TMS",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/answer/cell/:projectId/:recipeId/:rowId/:columnId/:z/:x/:y",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/answer/cell/:projectId/:recipeId/:rowId/:columnId/:z/:x/:y",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -787,39 +867,32 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
+									"value": "",
+									"id": "projectId"
 								},
 								{
-									"description": "",
-									"key": "recipeId",
-									"value": ""
+									"value": "",
+									"id": "recipeId"
 								},
 								{
-									"description": "",
-									"key": "rowId",
-									"value": ""
+									"value": "",
+									"id": "rowId"
 								},
 								{
-									"description": "",
-									"key": "columnId",
-									"value": ""
+									"value": "",
+									"id": "columnId"
 								},
 								{
-									"description": "",
-									"key": "z",
-									"value": ""
+									"value": "",
+									"id": "z"
 								},
 								{
-									"description": "",
-									"key": "x",
-									"value": ""
+									"value": "",
+									"id": "x"
 								},
 								{
-									"description": "",
-									"key": "y",
-									"value": ""
+									"value": "",
+									"id": "y"
 								}
 							]
 						},
@@ -844,62 +917,6 @@
 			]
 		},
 		{
-			"name": "Auth",
-			"description": "",
-			"item": [
-				{
-					"name": "Get user token",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var data = JSON.parse( responseBody );",
-									"",
-									"postman.setEnvironmentVariable( \"auth_token\", data.access_token );",
-									"postman.setEnvironmentVariable( \"token\", data.access_token );"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "https://geobigdata.io/auth/v1/oauth/token/",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Basic {{apikey}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "grant_type",
-									"value": "password",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "text"
-								}
-							]
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Estimates",
 			"description": "",
 			"item": [
@@ -907,12 +924,9 @@
 					"name": "Retrieve estimate for existing project",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/estimate/:projectId/:recipeId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/estimate/:projectId/:recipeId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -924,14 +938,12 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
+									"value": "",
+									"id": "projectId"
 								},
 								{
-									"description": "",
-									"key": "recipeId",
-									"value": ""
+									"value": "",
+									"id": "recipeId"
 								}
 							]
 						},
@@ -956,7 +968,7 @@
 				{
 					"name": "Retrieve estimate for new project",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/estimate",
+						"url": "{{environment}}/answer-factory-recipe-service/api/estimate",
 						"method": "POST",
 						"header": [
 							{
@@ -993,12 +1005,9 @@
 					"name": "Retrieve Project IDAHO Server Capabilities",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-tms/tms/idahoImage/:projectId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-tms",
@@ -1009,9 +1018,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": "ad53cd92-8a5c-46fb-a278-b58e70d78f90"
+									"value": "ad53cd92-8a5c-46fb-a278-b58e70d78f90",
+									"id": "projectId"
 								}
 							]
 						},
@@ -1032,12 +1040,9 @@
 					"name": "Retrieve Project IDAHO Services Root",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/services/root.xml",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-tms/tms/idahoImage/:projectId/services/root.xml",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-tms",
@@ -1050,9 +1055,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
+									"value": "",
+									"id": "projectId"
 								}
 							]
 						},
@@ -1078,12 +1082,9 @@
 					"name": "Retrieve IDAHO Tile",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory/tms/idahoImage/:projectId/1.0.0/:idahoId/:zoomLevel/:tileX/:tileYext",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory/tms/idahoImage/:projectId/1.0.0/:idahoId/:zoomLevel/:tileX/:tileYext",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory",
@@ -1099,29 +1100,24 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
+									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f",
+									"id": "projectId"
 								},
 								{
-									"description": "",
-									"key": "idahoId",
-									"value": "193dd2df-7b4e-46cc-b180-363b10f230c9"
+									"value": "193dd2df-7b4e-46cc-b180-363b10f230c9",
+									"id": "idahoId"
 								},
 								{
-									"description": "",
-									"key": "zoomLevel",
-									"value": "18"
+									"value": "18",
+									"id": "zoomLevel"
 								},
 								{
-									"description": "",
-									"key": "tileX",
-									"value": "144647"
+									"value": "144647",
+									"id": "tileX"
 								},
 								{
-									"description": "",
-									"key": "tileYext",
-									"value": "104973.png"
+									"value": "104973.png",
+									"id": "tileYext"
 								}
 							]
 						},
@@ -1147,12 +1143,9 @@
 					"name": "Retrieve project IDAHO Tile Map Service",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/1.0.0",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-tms/tms/idahoImage/:projectId/1.0.0",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-tms",
@@ -1164,9 +1157,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
+									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f",
+									"id": "projectId"
 								}
 							]
 						},
@@ -1192,12 +1184,9 @@
 					"name": "Retrieve IDAHO Tile Map Service Resource",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/services/tilemapservice.xml",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-tms/tms/idahoImage/:projectId/services/tilemapservice.xml",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-tms",
@@ -1210,9 +1199,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
+									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f",
+									"id": "projectId"
 								}
 							]
 						},
@@ -1238,12 +1226,9 @@
 					"name": "Retrieve IDAHO Tile Set Service",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/1.0.0/:idahoId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-tms/tms/idahoImage/:projectId/1.0.0/:idahoId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-tms",
@@ -1256,14 +1241,12 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
+									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f",
+									"id": "projectId"
 								},
 								{
-									"description": "",
-									"key": "idahoId",
-									"value": "193dd2df-7b4e-46cc-b180-363b10f230c9"
+									"value": "193dd2df-7b4e-46cc-b180-363b10f230c9",
+									"id": "idahoId"
 								}
 							]
 						},
@@ -1284,12 +1267,9 @@
 					"name": "Retrieve Project Tile",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory/tms/idahoImage/:projectId/1.0.0/:zoomLevel/:tileX/:tileYext",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory/tms/idahoImage/:projectId/1.0.0/:zoomLevel/:tileX/:tileYext",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory",
@@ -1304,24 +1284,20 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
+									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f",
+									"id": "projectId"
 								},
 								{
-									"description": "",
-									"key": "zoomLevel",
-									"value": "18"
+									"value": "18",
+									"id": "zoomLevel"
 								},
 								{
-									"description": "",
-									"key": "tileX",
-									"value": "144647"
+									"value": "144647",
+									"id": "tileX"
 								},
 								{
-									"description": "",
-									"key": "tileYext",
-									"value": "104973.png"
+									"value": "104973.png",
+									"id": "tileYext"
 								}
 							]
 						},
@@ -1347,12 +1323,9 @@
 					"name": "Retrieve Project Tile Set Service",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/project/1.0.0/:projectId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-tms/tms/project/1.0.0/:projectId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-tms",
@@ -1364,9 +1337,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
+									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f",
+									"id": "projectId"
 								}
 							]
 						},
@@ -1397,7 +1369,7 @@
 				{
 					"name": "Retrieve List of Projects",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-project-service/api/project",
+						"url": "{{environment}}/answer-factory-project-service/api/project",
 						"method": "GET",
 						"header": [
 							{
@@ -1419,7 +1391,7 @@
 				{
 					"name": "Create New Project",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-project-service/api/project",
+						"url": "{{environment}}/answer-factory-project-service/api/project",
 						"method": "POST",
 						"header": [
 							{
@@ -1445,12 +1417,9 @@
 					"name": "Delete Project",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/project/:projectId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-project-service/api/project/:projectId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-project-service",
@@ -1461,9 +1430,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
+									"value": "",
+									"id": "projectId"
 								}
 							]
 						},
@@ -1487,12 +1455,9 @@
 					"name": "Update Project",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/project/:projectId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-project-service/api/project/:projectId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-project-service",
@@ -1503,9 +1468,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
+									"value": "",
+									"id": "projectId"
 								}
 							]
 						},
@@ -1534,12 +1498,9 @@
 					"name": "Retrieve Project",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/project/:projectId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-project-service/api/project/:projectId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-project-service",
@@ -1580,7 +1541,7 @@
 				{
 					"name": "Project Name Uniqueness",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-project-service/api/project/validate/name",
+						"url": "{{environment}}/answer-factory-project-service/api/project/validate/name",
 						"method": "POST",
 						"header": [
 							{
@@ -1596,9 +1557,9 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"name\": \"eric_Chimney_Tops\"\n    }"
+							"raw": ""
 						},
-						"description": "Validate project name uniqueness.\n\nPOSTMAN note: POSTMAN interprets the response as JSON, when the response is actually text. To view the response in POSTMAN, change the response dropdown from JSON to Text."
+						"description": "Validate project name uniqueness."
 					},
 					"response": []
 				}
@@ -1611,7 +1572,7 @@
 				{
 					"name": "Retrieve all recipes",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipes",
+						"url": "{{environment}}/answer-factory-recipe-service/api/recipes",
 						"method": "GET",
 						"header": [
 							{
@@ -1634,12 +1595,9 @@
 					"name": "Retrieve specific recipe",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/:recipe",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/recipe/:recipe",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -1650,9 +1608,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "recipe",
-									"value": "extract-oil-tanks"
+									"value": "extract-oil-tanks",
+									"id": "recipe"
 								}
 							]
 						},
@@ -1677,7 +1634,7 @@
 				{
 					"name": "Create New Recipe",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe",
+						"url": "{{environment}}/answer-factory-recipe-service/api/recipe",
 						"method": "POST",
 						"header": [
 							{
@@ -1702,7 +1659,7 @@
 				{
 					"name": "Create New Recipe with JSON Object",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/json",
+						"url": "{{environment}}/answer-factory-recipe-service/api/recipe/json",
 						"method": "POST",
 						"header": [
 							{
@@ -1728,12 +1685,9 @@
 					"name": "Update Recipe",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/:recipeId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/recipe/:recipeId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -1744,9 +1698,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "recipeId",
-									"value": "test-recipe-3"
+									"value": "test-recipe-3",
+									"id": "recipeId"
 								}
 							]
 						},
@@ -1775,12 +1728,9 @@
 					"name": "Update Recipe with JSON Object",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/json/:recipeid",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/recipe/json/:recipeid",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -1792,9 +1742,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "recipeid",
-									"value": "foliage-test"
+									"value": "foliage-test",
+									"id": "recipeid"
 								}
 							]
 						},
@@ -1823,12 +1772,9 @@
 					"name": "Delete Recipe",
 					"request": {
 						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/:recipeId",
-							"protocol": "https",
+							"raw": "{{environment}}/answer-factory-recipe-service/api/recipe/:recipeId",
 							"host": [
-								"vector",
-								"geobigdata",
-								"io"
+								"{{environment}}"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -1839,9 +1785,8 @@
 							"query": [],
 							"variable": [
 								{
-									"description": "",
-									"key": "recipeId",
-									"value": ""
+									"value": "",
+									"id": "recipeId"
 								}
 							]
 						},
@@ -1870,7 +1815,7 @@
 				{
 					"name": "Runner Blueprints",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/blueprint",
+						"url": "{{environment}}/answer-factory-recipe-service/api/blueprint",
 						"method": "GET",
 						"header": [
 							{
@@ -1887,7 +1832,7 @@
 				{
 					"name": "Runner Blueprint Build",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/blueprint/build",
+						"url": "{{environment}}/answer-factory-recipe-service/api/blueprint/build",
 						"method": "POST",
 						"header": [
 							{
@@ -1912,9 +1857,104 @@
 			]
 		},
 		{
+			"name": "Through the UI",
+			"description": "I believe these work based on UI; these aren't the direct API calls.",
+			"item": [
+				{
+					"name": "Retrieve tile list",
+					"request": {
+						"url": "{{environment}}/answer-factory-tms/list/originalResTiles/Potatoes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Lookin for TMS files associated with the areas in question for the project."
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve project list",
+					"request": {
+						"url": "{{environment}}/answer-factory-tms/projects",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get user token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse( responseBody );",
+							"",
+							"postman.setEnvironmentVariable( \"auth_token\", data.access_token );",
+							"postman.setEnvironmentVariable( \"token\", data.access_token );"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "https://geobigdata.io/auth/v1/oauth/token/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{apikey}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "AnswerFactory Recipe Heartbeat",
 			"request": {
-				"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/heartbeat",
+				"url": "{{environment}}/answer-factory-recipe-service/api/heartbeat",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -1928,7 +1968,7 @@
 		{
 			"name": "AnswerFactory TMS Heartbeat",
 			"request": {
-				"url": "https://vector.geobigdata.io/answer-factory-tms/api/heartbeat",
+				"url": "{{environment}}/answer-factory-tms/api/heartbeat",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -1939,10 +1979,41 @@
 		{
 			"name": "AnswerFactory Project Heartbeat",
 			"request": {
-				"url": "https://vector.geobigdata.io/answer-factory-project-service/api/heartbeat",
+				"url": "{{environment}}/answer-factory-project-service/api/heartbeat",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "AnswerFactory UI Heartbeat",
+			"request": {
+				"url": "{{environment}}/answer-factory/api/heartbeat",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "AnswerFactory Account Hearbeat",
+			"request": {
+				"url": "{{environment}}/answer-factory-account-service/api/heartbeat",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"acquisitionIds\": [ \"101001000547F800\" , \"Potato\" , \"Sasquatch\" , \"104A01000C836B00\" , \"1030010003A3D500\" ] }"
+				},
 				"description": ""
 			},
 			"response": []
