@@ -29,17 +29,20 @@ To do this, select the environment pull down menu, and choose "manage environmen
 
 To type in the environment variables from here, choose the Back button, then choose "GBDX". To get back to this menu later, choose "manage environments" from the pull down menu again.
 
-* Type in your username, password, and API key. If you need help finding your API key, go to [Lesson: How to Find your API key](http://gbdxdocs.digitalglobe.com/v1/docs/lesson-how-to-find-your-api-key-1).
+* Type in your email address and password.
 
 ###Import the Postman Collection
 * To import the GBDX Open Source Postman Collection, choose "import" from the top of the screen.
 
-* Select "Choose Files", then navigate to the file location where you saved the GBDX Postman files. Choose the file "GBDXVector.json.postman_collection" and open it. You'll get a notification that says "Collection GBDXVector Imported.
+* Select "Choose Files", then navigate to the file location where you saved the GBDX Postman files.
+* Choose the specific collection to import:
+	* To import the GBDX Vector API collection, select the file "GBDXVector.postman_collection.json" and open it. You'll get a notification that says "Collection GBDXVector Imported.
+	* To import the GBDX AnswerFactory API collection, select the file "GBDXAnswerFactory.postman_collection.json" and open it. You'll get a notification that says "Collection GBDXAnswerFactory Imported.
 
 ###Get a Token
 Before you can start making API requests using Postman, you need to get your Bearer Token (also referred to as an OAuth2 Token). If you've filled in your environment variables, you can use Postman to get your token.
 
-* On the left hand side under Collections, click "GBDXVector". You'll see a list of files. Under "Auth" select the Post "Get User Token".
+* On the left hand side under Collections, click "GBDXVector" (or "GBDXAnswerFactory") to expand the collection. You'll see a list of directories. Expand "Auth" and select the Post "Get User Token".
 
 Since you've already added your environment variables, you don't need to fill in the values here. Click Send.
 

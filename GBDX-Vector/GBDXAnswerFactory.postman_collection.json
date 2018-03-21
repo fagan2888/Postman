@@ -1,38 +1,49 @@
 {
-	"variables": [],
 	"info": {
 		"name": "GBDX AnswerFactory",
-		"_postman_id": "3dabfe86-4de9-9d55-ed75-7486822c6d25",
+		"_postman_id": "ee4bed78-1f42-43a5-9a21-693a09510fb5",
 		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "AnswerFactory Feedback",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Send new recipe suggestion",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/feedback/new_recipe",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "This is a suggestion for a new recipe."
 						},
-						"description": ""
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/feedback/new_recipe",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-recipe-service",
+								"api",
+								"feedback",
+								"new_recipe"
+							]
+						},
+						"description": null
 					},
 					"response": []
 				}
@@ -40,11 +51,26 @@
 		},
 		{
 			"name": "AnswerFactory Tags",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Retrieve tag list for project and recipe",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id",
 							"protocol": "https",
@@ -60,41 +86,39 @@
 								":project_id",
 								":recipe_id"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "project_id",
-									"value": "1234567890"
+									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "openskynet-aircraft-detection"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve tag list for project",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id",
 							"protocol": "https",
@@ -109,36 +133,31 @@
 								"tags",
 								":project_id"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "project_id",
-									"value": "1234567890"
+									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Delete item tag from cell",
 					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name/:item_id",
 							"protocol": "https",
@@ -158,56 +177,55 @@
 								":tag_name",
 								":item_id"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "project_id",
-									"value": "1234567890"
+									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "openskynet-aircraft-detection"
 								},
 								{
-									"description": "",
 									"key": "row_id",
 									"value": "654321"
 								},
 								{
-									"description": "",
 									"key": "column_id",
 									"value": "7890"
 								},
 								{
-									"description": "",
 									"key": "tag_name",
 									"value": "foo"
 								},
 								{
-									"description": "",
 									"key": "item_id",
 									"value": "vector-123456"
 								}
 							]
 						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve all tags with items for cell",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id",
 							"protocol": "https",
@@ -225,51 +243,47 @@
 								":row_id",
 								":column_id"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "project_id",
-									"value": "1234567890"
+									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "openskynet-aircraft-detection"
 								},
 								{
-									"description": "",
 									"key": "row_id",
 									"value": "654321"
 								},
 								{
-									"description": "",
 									"key": "column_id",
 									"value": "7890"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve items for cell tag",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name",
 							"protocol": "https",
@@ -288,56 +302,47 @@
 								":column_id",
 								":tag_name"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "project_id",
-									"value": "1234567890"
+									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "openskynet-aircraft-detection"
 								},
 								{
-									"description": "",
 									"key": "row_id",
 									"value": "AOI1"
 								},
 								{
-									"description": "",
 									"key": "column_id",
 									"value": "7aae27ae-baf6-4e14-adba-60b9c6684464"
 								},
 								{
-									"description": "",
 									"key": "tag_name",
 									"value": "foo"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Tag item in cell",
 					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name/:item_id",
 							"protocol": "https",
@@ -357,56 +362,51 @@
 								":tag_name",
 								":item_id"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "project_id",
-									"value": "1234567890"
+									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "openskynet-aircraft-detection"
 								},
 								{
-									"description": "",
 									"key": "row_id",
 									"value": "AOI1"
 								},
 								{
-									"description": "",
 									"key": "column_id",
 									"value": "7aae27ae-baf6-4e14-adba-60b9c6684464"
 								},
 								{
-									"description": "",
 									"key": "tag_name",
 									"value": "foo"
 								},
 								{
-									"description": "",
 									"key": "item_id",
 									"value": "vector-123456"
 								}
 							]
 						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Save cell tag",
 					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/tags/:project_id/:recipe_id/:row_id/:column_id/:tag_name",
 							"protocol": "https",
@@ -425,45 +425,30 @@
 								":column_id",
 								":tag_name"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "project_id",
-									"value": "1234567890"
+									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipe_id",
-									"value": "my-recipe"
+									"value": "openskynet-aircraft-detection"
 								},
 								{
-									"description": "",
 									"key": "row_id",
 									"value": "AOI1"
 								},
 								{
-									"description": "",
 									"key": "column_id",
 									"value": "7aae27ae-baf6-4e14-adba-60b9c6684464"
 								},
 								{
-									"description": "",
 									"key": "tag_name",
 									"value": "foo"
 								}
 							]
 						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				}
@@ -471,11 +456,26 @@
 		},
 		{
 			"name": "Answers",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Retrieve Answer",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/answer/cell/:projectId/:recipeId/:rowId/:columnId",
 							"protocol": "https",
@@ -494,51 +494,47 @@
 								":rowId",
 								":columnId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipeId",
 									"value": "openskynet-aircraft-detection"
 								},
 								{
-									"description": "",
 									"key": "rowId",
 									"value": "AOI1"
 								},
 								{
-									"description": "",
 									"key": "columnId",
 									"value": "7aae27ae-baf6-4e14-adba-60b9c6684464"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve Entire Answer",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/answer/entire/cell/:projectId/:recipeId/:rowId/:columnId",
 							"protocol": "https",
@@ -558,51 +554,47 @@
 								":rowId",
 								":columnId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipeId",
 									"value": "openskynet-aircraft-detection"
 								},
 								{
-									"description": "",
 									"key": "rowId",
 									"value": "AOI1"
 								},
 								{
-									"description": "",
 									"key": "columnId",
 									"value": "7aae27ae-baf6-4e14-adba-60b9c6684464"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve Answer IDAHO Images",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/answer/cell/:projectId/:recipeId/:rowId/:columnId/idahoImages",
 							"protocol": "https",
@@ -622,51 +614,47 @@
 								":columnId",
 								"idahoImages"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipeId",
 									"value": "openskynet-aircraft-detection"
 								},
 								{
-									"description": "",
 									"key": "rowId",
 									"value": "AOI1"
 								},
 								{
-									"description": "",
 									"key": "columnId",
 									"value": "7aae27ae-baf6-4e14-adba-60b9c6684464"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve Answer Status",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/status/:projectId",
 							"protocol": "https",
@@ -682,36 +670,35 @@
 								"status",
 								":projectId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
-									"value": ""
+									"value": "ad53cd92-8a5c-46fb-a278-b58e70d78f90"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve Answer Table",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/answer/table/:projectId/:recipeId",
 							"protocol": "https",
@@ -728,41 +715,39 @@
 								":projectId",
 								":recipeId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
-									"value": ""
+									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipeId",
-									"value": ""
+									"value": "openskynet-aircraft-detection"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve Answer TMS",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/answer/cell/:projectId/:recipeId/:rowId/:columnId/:z/:x/:y",
 							"protocol": "https",
@@ -784,59 +769,37 @@
 								":x",
 								":y"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipeId",
 									"value": "openskynet-aircraft-detection"
 								},
 								{
-									"description": "",
 									"key": "rowId",
 									"value": "AOI1"
 								},
 								{
-									"description": "",
 									"key": "columnId",
 									"value": "7aae27ae-baf6-4e14-adba-60b9c6684464"
 								},
 								{
-									"description": "",
 									"key": "z",
 									"value": "14"
 								},
 								{
-									"description": "",
 									"key": "x",
 									"value": ""
 								},
 								{
-									"description": "",
 									"key": "y",
 									"value": ""
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
 						"description": "EXPERIMENTAL"
 					},
 					"response": []
@@ -845,32 +808,16 @@
 		},
 		{
 			"name": "Auth",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Get user token",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var data = JSON.parse( responseBody );",
-									"",
-									"postman.setEnvironmentVariable( \"auth_token\", data.access_token );",
-									"postman.setEnvironmentVariable( \"token\", data.access_token );"
-								]
-							}
-						}
-					],
 					"request": {
-						"url": "https://geobigdata.io/auth/v1/oauth/token/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic {{apikey}}",
-								"description": ""
+								"value": "application/x-www-form-urlencoded"
 							}
 						],
 						"body": {
@@ -893,7 +840,53 @@
 								}
 							]
 						},
-						"description": ""
+						"url": {
+							"raw": "https://geobigdata.io/auth/v1/oauth/token/",
+							"protocol": "https",
+							"host": [
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"oauth",
+								"token",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://geobigdata.io/auth/v1/validate_token",
+							"protocol": "https",
+							"host": [
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"validate_token"
+							]
+						},
+						"description": null
 					},
 					"response": []
 				}
@@ -901,11 +894,26 @@
 		},
 		{
 			"name": "Estimates",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Retrieve estimate for existing project",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/estimate/:projectId/:recipeId",
 							"protocol": "https",
@@ -921,34 +929,17 @@
 								":projectId",
 								":recipeId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								},
 								{
-									"description": "",
 									"key": "recipeId",
 									"value": "extract-lulc-change"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
 						"description": "Lists all projects associated with the current user's group account."
 					},
 					"response": []
@@ -956,30 +947,40 @@
 				{
 					"name": "Retrieve estimate for new project",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/estimate",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Test_Project\",\n\t\"recipeConfigs\":[\n\t\t{\n\t\t\t\"recipeId\": \"query-tweets\",\n\t\t\t\"recipeName\": \"Query Tweets\",\n\t\t\t\"parameters\": [],\n\t\t\t\"configurationDate\": \"2017-05-01T12:56:48.276Z\"\n\t\t}\n\t\t],\n\t\t\"tags\":[\n\t\t\t\"test-project-tag\"\n\t\t\t],\n\t\t\"description\": \"Description of project purpose.\",\n\t\t\"notes\": \"Notes on project.\",\n\t\t\"acquisitionIds\":\"\",\n\t\t\"originalGeometries\":[\n\t\t\t{\n\t\t\t\t\"type\": \"Feature\",\n\t\t\t\t\"geometry\":{\n\t\t\t\t\t\"type\": \"Polygon\",\n\t\t\t\t\t\"coordinates\":[\n\t\t\t\t\t\t[\n\t\t\t\t\t\t\t[12.491111755371088,41.892470325119746],\n\t\t\t\t\t\t\t[12.489523887634274,41.888381086722546],\n\t\t\t\t\t\t\t[12.49510288238525,41.88694340165634],\n\t\t\t\t\t\t\t[12.497076988220211,41.89116051944157],\n\t\t\t\t\t\t\t[12.491111755371088,41.892470325119746]\n\t\t\t\t\t\t]\n\t\t\t\t\t]\n\t\t\t\t},\n\t\t\t\t\"properties\":{\n\t\t\t\t\t\"name\": \"Colosseum\"\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"aois\":[\n\t\t\t{\n\t\t\t\t\"type\": \"Polygon\",\n\t\t\t\t\"coordinates\":[\n\t\t\t\t\t[\n\t\t\t\t\t\t[12.491112,41.89247],\n\t\t\t\t\t\t[12.497077,41.891161],\n\t\t\t\t\t\t[12.495103,41.886943],\n\t\t\t\t\t\t[12.489524,41.888381],\n\t\t\t\t\t\t[12.491112,41.89247]\n\t\t\t\t\t]\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"continuouslyOrdered\": false,\n\t\t\"visibility\":[],\n\t\t\"dateRange\":{\n\t\t\t\"startDate\":null,\n\t\t\t\"endDate\":null,\n\t\t\t\"count\":null\n\t\t}\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/estimate",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-recipe-service",
+								"api",
+								"estimate"
+							]
+						},
+						"description": null
 					},
 					"response": []
 				}
@@ -987,11 +988,22 @@
 		},
 		{
 			"name": "IDAHO TMS",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Retrieve Project IDAHO Server Capabilities",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId",
 							"protocol": "https",
@@ -1006,24 +1018,13 @@
 								"idahoImage",
 								":projectId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "ad53cd92-8a5c-46fb-a278-b58e70d78f90"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {},
 						"description": "Lists all projects associated with the current user's group account."
 					},
 					"response": []
@@ -1031,6 +1032,21 @@
 				{
 					"name": "Retrieve Project IDAHO Services Root",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/services/root.xml",
 							"protocol": "https",
@@ -1047,36 +1063,35 @@
 								"services",
 								"root.xml"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
-									"value": ""
+									"value": "ad53cd92-8a5c-46fb-a278-b58e70d78f90"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve IDAHO Tile",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "image/png"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory/tms/idahoImage/:projectId/1.0.0/:idahoId/:zoomLevel/:tileX/:tileYext",
 							"protocol": "https",
@@ -1096,56 +1111,51 @@
 								":tileX",
 								":tileYext"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
 								},
 								{
-									"description": "",
 									"key": "idahoId",
 									"value": "193dd2df-7b4e-46cc-b180-363b10f230c9"
 								},
 								{
-									"description": "",
 									"key": "zoomLevel",
 									"value": "18"
 								},
 								{
-									"description": "",
 									"key": "tileX",
 									"value": "144647"
 								},
 								{
-									"description": "",
 									"key": "tileYext",
 									"value": "104973.png"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "image/png",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve project IDAHO Tile Map Service",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/1.0.0",
 							"protocol": "https",
@@ -1161,36 +1171,35 @@
 								":projectId",
 								"1.0.0"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve IDAHO Tile Map Service Resource",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/services/tilemapservice.xml",
 							"protocol": "https",
@@ -1207,36 +1216,31 @@
 								"services",
 								"tilemapservice.xml"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve IDAHO Tile Set Service",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/1.0.0/:idahoId",
 							"protocol": "https",
@@ -1253,36 +1257,39 @@
 								"1.0.0",
 								":idahoId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
 								},
 								{
-									"description": "",
 									"key": "idahoId",
 									"value": "193dd2df-7b4e-46cc-b180-363b10f230c9"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve Project Tile",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "image/png"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory/tms/idahoImage/:projectId/1.0.0/:zoomLevel/:tileX/:tileYext",
 							"protocol": "https",
@@ -1301,51 +1308,47 @@
 								":tileX",
 								":tileYext"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
 								},
 								{
-									"description": "",
 									"key": "zoomLevel",
 									"value": "18"
 								},
 								{
-									"description": "",
 									"key": "tileX",
 									"value": "144647"
 								},
 								{
-									"description": "",
 									"key": "tileYext",
 									"value": "104973.png"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "image/png",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve Project Tile Set Service",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/project/1.0.0/:projectId",
 							"protocol": "https",
@@ -1361,29 +1364,13 @@
 								"1.0.0",
 								":projectId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
 									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml",
-								"description": ""
-							}
-						],
-						"body": {},
 						"description": "Lists all projects associated with the current user's group account."
 					},
 					"response": []
@@ -1392,26 +1379,40 @@
 		},
 		{
 			"name": "Project",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Retrieve List of Projects",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-project-service/api/project",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/project",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-project-service",
+								"api",
+								"project"
+							]
+						},
 						"description": "Lists all projects associated with the current user's group account."
 					},
 					"response": []
@@ -1419,23 +1420,34 @@
 				{
 					"name": "Create New Project",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-project-service/api/project",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"id\":null,\n  \"owner\":\"testperson@test.com\",\n  \"accountId\":\"uuid\",\n  \"createDate\":\"2017-05-09T16:07:09.919Z\",\n  \"updateDate\":\"2017-05-09T16:07:09.919Z\",\n  \"name\":\"Barcelona_Test_Project\",\n  \"recipeConfigs\":[\n    {\n      \"recipeId\":\"query-tweets\",\n      \"recipeName\":\"Query Tweets\",\n      \"parameters\":[],\n      \"configurationDate\":\"2017-05-09T16:07:09.919Z\"\n    }\n  ],\n  \"tags\":[\"project-level-tag-1\", \"project_level_tag_2\"],\n  \"description\":\"A description of the project purpose goes here.\",\n  \"notes\":\"Notes about the project go here.\",\n  \"acquisitionIds\":\"\",\n  \"originalGeometries\":[\n    {\n      \"type\":\"Feature\",\n      \"geometry\":{\n         \"type\":\"Polygon\",\n         \"coordinates\":[[[2.0607304573059078,41.29657427386536],[2.069013118743896,41.28512719900422],[2.105834484100342,41.2952845630208],[2.0968222618103023,41.31005022654688],[2.0607304573059078,41.29657427386536]]]\n      },\n      \"properties\":{\n         \"name\":\"BCN\"\n      }\n    }\n  ],\n  \"aois\":[\n  \t{\n      \"type\":\"Polygon\",\n      \"coordinates\":[[[2.060728,41.296582],[2.096819,41.310058],[2.096821,41.310058],[2.096823,41.310058],[2.096824,41.310058],[2.096826,41.310057],[2.096827,41.310057],[2.096828,41.310056],[2.096829,41.310054],[2.105841,41.295289],[2.105842,41.295287],[2.105842,41.295286],[2.105842,41.295284],[2.105842,41.295282],[2.105842,41.295281],[2.105841,41.29528],[2.10584,41.295278],[2.105838,41.295277],[2.105837,41.295277],[2.069015,41.285119],[2.069014,41.285119],[2.069012,41.285119],[2.06901,41.28512],[2.069009,41.28512],[2.069008,41.285121],[2.069007,41.285123],[2.060724,41.29657],[2.060723,41.296571],[2.060723,41.296573],[2.060722,41.296574],[2.060723,41.296576],[2.060723,41.296577],[2.060724,41.296579],[2.060725,41.29658],[2.060726,41.296581],[2.060728,41.296582]]]\n  \t}\n  ],\n  \"namedBuffers\":[\n  \t{\n  \t   \"name\":\"BCN\",\n  \t   \"buffer\":\n  \t     {\n  \t        \"type\":\"Polygon\",\n            \"coordinates\":[[[2.060728,41.296582],[2.096819,41.310058],[2.096821,41.310058],[2.096823,41.310058],[2.096824,41.310058],[2.096826,41.310057],[2.096827,41.310057],[2.096828,41.310056],[2.096829,41.310054],[2.105841,41.295289],[2.105842,41.295287],[2.105842,41.295286],[2.105842,41.295284],[2.105842,41.295282],[2.105842,41.295281],[2.105841,41.29528],[2.10584,41.295278],[2.105838,41.295277],[2.105837,41.295277],[2.069015,41.285119],[2.069014,41.285119],[2.069012,41.285119],[2.06901,41.28512],[2.069009,41.28512],[2.069008,41.285121],[2.069007,41.285123],[2.060724,41.29657],[2.060723,41.296571],[2.060723,41.296573],[2.060722,41.296574],[2.060723,41.296576],[2.060723,41.296577],[2.060724,41.296579],[2.060725,41.29658],[2.060726,41.296581],[2.060728,41.296582]]]\n  \t     }\n  \t}\n  ],\n  \"continuouslyOrdered\":false,\n  \"visibility\":[],\n  \"dateRange\":{\n  \"startDate\":null,\n  \"endDate\":null,\n  \"count\":null\n  },\n  \"enabled\":true\n}"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/project",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-project-service",
+								"api",
+								"project"
+							]
 						},
 						"description": "Edit Owner and AccountId to match the credentials for the account being tested. May need to edit recipeId and recipeName as well, depending on recipes and data available in the account being tested."
 					},
@@ -1444,6 +1456,17 @@
 				{
 					"name": "Delete Project",
 					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/project/:projectId",
 							"protocol": "https",
@@ -1458,81 +1481,35 @@
 								"project",
 								":projectId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
-									"value": ""
+									"value": "d02e3502-bc0f-4633-8394-1209867336be"
 								}
 							]
 						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Update Project",
 					"request": {
-						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/project/:projectId",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"answer-factory-project-service",
-								"api",
-								"project",
-								":projectId"
-							],
-							"query": [],
-							"variable": [
-								{
-									"description": "",
-									"key": "projectId",
-									"value": ""
-								}
-							]
-						},
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"id\":null,\n  \"owner\":\"testperson@test.com\",\n  \"accountId\":\"uuid\",\n  \"createDate\":\"2017-05-09T16:07:09.919Z\",\n  \"updateDate\":\"2017-05-10T16:07:09.919Z\",\n  \"name\":\"Barcelona_Test_Project\",\n  \"recipeConfigs\":[\n    {\n      \"recipeId\":\"query-tweets\",\n      \"recipeName\":\"Query Tweets\",\n      \"parameters\":[],\n      \"configurationDate\":\"2017-05-09T16:07:09.919Z\"\n    }\n  ],\n  \"tags\":[\"project-level-tag-1\", \"project_level_tag_2\", \"new_project_level_tag\"],\n  \"description\":\"The description has been updated.\",\n  \"notes\":\"Notes about the project go here.\",\n  \"acquisitionIds\":\"\",\n  \"originalGeometries\":[\n    {\n      \"type\":\"Feature\",\n      \"geometry\":{\n         \"type\":\"Polygon\",\n         \"coordinates\":[[[2.0607304573059078,41.29657427386536],[2.069013118743896,41.28512719900422],[2.105834484100342,41.2952845630208],[2.0968222618103023,41.31005022654688],[2.0607304573059078,41.29657427386536]]]\n      },\n      \"properties\":{\n         \"name\":\"BCN\"\n      }\n    }\n  ],\n  \"aois\":[\n  \t{\n      \"type\":\"Polygon\",\n      \"coordinates\":[[[2.060728,41.296582],[2.096819,41.310058],[2.096821,41.310058],[2.096823,41.310058],[2.096824,41.310058],[2.096826,41.310057],[2.096827,41.310057],[2.096828,41.310056],[2.096829,41.310054],[2.105841,41.295289],[2.105842,41.295287],[2.105842,41.295286],[2.105842,41.295284],[2.105842,41.295282],[2.105842,41.295281],[2.105841,41.29528],[2.10584,41.295278],[2.105838,41.295277],[2.105837,41.295277],[2.069015,41.285119],[2.069014,41.285119],[2.069012,41.285119],[2.06901,41.28512],[2.069009,41.28512],[2.069008,41.285121],[2.069007,41.285123],[2.060724,41.29657],[2.060723,41.296571],[2.060723,41.296573],[2.060722,41.296574],[2.060723,41.296576],[2.060723,41.296577],[2.060724,41.296579],[2.060725,41.29658],[2.060726,41.296581],[2.060728,41.296582]]]\n  \t}\n  ],\n  \"namedBuffers\":[\n  \t{\n  \t   \"name\":\"BCN\",\n  \t   \"buffer\":\n  \t     {\n  \t        \"type\":\"Polygon\",\n            \"coordinates\":[[[2.060728,41.296582],[2.096819,41.310058],[2.096821,41.310058],[2.096823,41.310058],[2.096824,41.310058],[2.096826,41.310057],[2.096827,41.310057],[2.096828,41.310056],[2.096829,41.310054],[2.105841,41.295289],[2.105842,41.295287],[2.105842,41.295286],[2.105842,41.295284],[2.105842,41.295282],[2.105842,41.295281],[2.105841,41.29528],[2.10584,41.295278],[2.105838,41.295277],[2.105837,41.295277],[2.069015,41.285119],[2.069014,41.285119],[2.069012,41.285119],[2.06901,41.28512],[2.069009,41.28512],[2.069008,41.285121],[2.069007,41.285123],[2.060724,41.29657],[2.060723,41.296571],[2.060723,41.296573],[2.060722,41.296574],[2.060723,41.296576],[2.060723,41.296577],[2.060724,41.296579],[2.060725,41.29658],[2.060726,41.296581],[2.060728,41.296582]]]\n  \t     }\n  \t}\n  ],\n  \"continuouslyOrdered\":false,\n  \"visibility\":[],\n  \"dateRange\":{\n  \"startDate\":null,\n  \"endDate\":null,\n  \"count\":null\n  },\n  \"enabled\":true\n}"
 						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Project",
-					"request": {
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/project/:projectId",
 							"protocol": "https",
@@ -1547,56 +1524,93 @@
 								"project",
 								":projectId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "projectId",
-									"value": "ec57f8d8-7d5f-4a7d-969f-32b154071658"
+									"value": "d02e3502-bc0f-4633-8394-1209867336be"
 								}
 							]
 						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Project",
+					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/project/:projectId",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-project-service",
+								"api",
+								"project",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": "ec57f8d8-7d5f-4a7d-969f-32b154071658"
+								}
+							]
+						},
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Project Name Uniqueness",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-project-service/api/project/validate/name",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Chimney_Tops\"\n}"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/project/validate/name",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-project-service",
+								"api",
+								"project",
+								"validate",
+								"name"
+							]
 						},
 						"description": "Validate project name uniqueness.\n\nPOSTMAN note: POSTMAN interprets the response as JSON, when the response is actually text. To view the response in POSTMAN, change the response dropdown from JSON to Text."
 					},
@@ -1606,26 +1620,47 @@
 		},
 		{
 			"name": "Recipe",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Retrieve all recipes",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipes",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipes?version=true",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-recipe-service",
+								"api",
+								"recipes"
+							],
+							"query": [
+								{
+									"key": "version",
+									"value": "true",
+									"equals": true
+								}
+							]
+						},
 						"description": "Return the recipes with definitions of all recipes available in the environment."
 					},
 					"response": []
@@ -1633,6 +1668,21 @@
 				{
 					"name": "Retrieve specific recipe",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/:recipe",
 							"protocol": "https",
@@ -1647,53 +1697,48 @@
 								"recipe",
 								":recipe"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "recipe",
 									"value": "extract-lulc-change"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Create New Recipe",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"test-recipe-3\",\r\n  \"name\": \"test-recipe-3\",\r\n  \"owner\": \"cberman\",\r\n  \"accountId\" : [\"c8f66cb2-dac0-4883-8d93-12d68de252fe\"],\r\n  \"definition\": \"item_type:test\",\r\n  \"description\": \"It's a test\",\r\n  \"recipeType\": \"vector-query\",\r\n  \"inputType\": \"vector-service\",\r\n  \"outputType\": \"vector-service\",\r\n  \"properties\": {\r\n    \"query_index\": \"test-result\"\r\n  }\r\n}"
+							"raw": "{\r\n  \"id\": \"test-recipe\",\r\n  \"name\": \"Test Recipe\",\r\n  \"version\": \"3.0.3\",\r\n  \"owner\": \"test.user@email.com\",\r\n  \"accountId\" : [\"account_id\"],\r\n  \"definition\": \"item_type:building\",\r\n  \"description\": \"It's a test recipe that pulls OSM data.\",\r\n  \"recipeType\": \"vector-query\",\r\n  \"inputType\": \"vector-service\",\r\n  \"outputType\": \"vector-service\",\r\n  \"properties\": {\r\n    \"query_index\": \"vector-osm*\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-recipe-service",
+								"api",
+								"recipe"
+							]
 						},
 						"description": "Create recipe with JSON string definition."
 					},
@@ -1702,23 +1747,35 @@
 				{
 					"name": "Create New Recipe with JSON Object",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/json",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"id\": \"foliage-test\",\r\n  \"name\": \"A Foliage Test Recipe\",\r\n  \"description\": \"Greenery\",\r\n  \"recipeType\": \"partitioned-workflow\",\r\n  \"inputType\": \"seasonal-acquisition\",\r\n  \"outputType\": \"vector-service\",\r\n  \"properties\": {\r\n    \"image_bands\": \"Pan_MS1_MS2\"\r\n  },\r\n  \"definition\": {\r\n    \"name\": \"Foliage test (full workflow)\",\r\n    \"tasks\": [\r\n      {\r\n        \"name\": \"aop\",\r\n        \"taskType\": \"AOP_Strip_Processor\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"enable_pansharpen\",\r\n            \"value\": \"false\"\r\n          },\r\n          {\r\n            \"name\": \"enable_dra\",\r\n            \"value\": \"false\"\r\n          },\r\n          {\r\n            \"name\": \"bands\",\r\n            \"value\": \"MS\"\r\n          },\r\n          {\r\n            \"name\": \"data\",\r\n            \"value\": \"{raster_path}\"\r\n          },\r\n          {\r\n            \"name\": \"ortho_epsg\",\r\n            \"value\": \"UTM\"\r\n          },\r\n          {\r\n            \"name\": \"ortho_interpolation_type\",\r\n            \"value\": \"Bilinear\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"data\"\r\n          },\r\n          {\r\n            \"name\": \"log\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"AOP_ENVI_HDR\",\r\n        \"name\": \"hdr\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"image\",\r\n            \"source\": \"aop:data\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_SpectralIndex\",\r\n        \"name\": \"ndvi\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"index\",\r\n            \"value\": \"Leaf Area Index\"\r\n          },\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"hdr:output_data\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ColorSliceClassification\",\r\n        \"name\": \"range\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"ndvi:output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"class_ranges\",\r\n            \"value\": \"[4.51, 10.01]\"\r\n          },\r\n          {\r\n            \"name\": \"class_colors\",\r\n            \"value\": \"[0, 255, 0]\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ClassificationSmoothing\",\r\n        \"name\": \"smoothing\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"range:output_raster_uri\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ClassificationAggregation\",\r\n        \"name\": \"aggregation\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"smoothing:output_raster_uri\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ClassificationToShapefile\",\r\n        \"name\": \"shapefile\",\r\n        \"timeout\": 36000,\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"aggregation:output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"export_classes\",\r\n            \"value\": \"4.51 to 10.01\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_vector_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"simplify-polygon:0.0.9\",\r\n        \"name\": \"simplify\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"shapefile\",\r\n            \"source\": \"shapefile:output_vector_uri\"\r\n          },\r\n          {\r\n            \"name\": \"tolerance\",\r\n            \"value\": \"2.0\"\r\n          },\r\n          {\r\n            \"name\": \"min_area\",\r\n            \"value\": \"100.0\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_shapefile\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"reproject\",\r\n        \"taskType\": \"gdal-cli-multiplex\",\r\n        \"timeout\": 36000,\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"data\",\r\n            \"source\": \"simplify:output_shapefile\"\r\n          },\r\n          {\r\n            \"name\": \"command\",\r\n            \"value\": \"mkdir -p $outdir/data; ogr2ogr -f \\\"ESRI Shapefile\\\" -a_srs \\\"EPSG:4326\\\" -t_srs \\\"EPSG:4326\\\" $outdir/data/reprojected.shp $indir/data/*.shp\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"IngestShpToVectorServices\",\r\n        \"name\": \"vector\",\r\n        \"timeout\": 36000,\r\n        \"impersonation_allowed\": true,\r\n        \"containerDescriptors\": [ { \"properties\": { \"domain\": \"t2medium\" } } ],\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"items\",\r\n            \"source\": \"reproject:data\"\r\n          },\r\n          {\r\n            \"name\": \"index\",\r\n            \"value\": \"vector-foliage-{ingest_date}\"\r\n          },\r\n          {\r\n            \"name\": \"shapefileMapping\",\r\n            \"value\": \"vector.crs=EPSG:4326\\nvector.ingestSource=Foliage Detection Testing\\nvector.itemType=Foliage\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"result\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"s3_vector\",\r\n        \"taskType\": \"StageDataToS3\",\r\n        \"timeout\": 36000,\r\n        \"containerDescriptors\": [ { \"properties\": { \"domain\": \"t2medium\" } } ],\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"data\",\r\n            \"source\": \"vector:result\"\r\n          },\r\n          {\r\n            \"name\": \"destination\",\r\n            \"value\": \"s3://{vector_ingest_bucket}/{recipe_id}/{run_id}/{task_name}\"\r\n          }\r\n        ],\r\n        \"outputs\": []\r\n      }\r\n    ]\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/json",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-recipe-service",
+								"api",
+								"recipe",
+								"json"
+							]
 						},
 						"description": "Create recipe with JSON Object."
 					},
@@ -1727,6 +1784,21 @@
 				{
 					"name": "Update Recipe",
 					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"test-recipe\",\r\n  \"name\": \"Test Recipe\",\r\n  \"owner\": \"test.user@email.com\",\r\n  \"accountId\" : [\"account_id\"],\r\n  \"definition\": \"item_type:highway\",\r\n  \"description\": \"It's a test recipe that pulls OSM data. Definition and Description have changed.\",\r\n  \"recipeType\": \"vector-query\",\r\n  \"inputType\": \"vector-service\",\r\n  \"outputType\": \"vector-service\",\r\n  \"properties\": {\r\n    \"query_index\": \"vector-osm*\"\r\n  }\r\n}"
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/:recipeId",
 							"protocol": "https",
@@ -1741,31 +1813,12 @@
 								"recipe",
 								":recipeId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "recipeId",
-									"value": "test-recipe-3"
+									"value": "test-recipe"
 								}
 							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"test-recipe-3\",\r\n  \"name\": \"test-recipe-3\",\r\n  \"owner\": \"cberman\",\r\n  \"accountId\" : [\"c8f66cb2-dac0-4883-8d93-12d68de252fe\"],\r\n  \"definition\": \"item_type:test\",\r\n  \"description\": \"My description has changed.\",\r\n  \"recipeType\": \"vector-query\",\r\n  \"inputType\": \"vector-service\",\r\n  \"outputType\": \"vector-service\",\r\n  \"properties\": {\r\n    \"query_index\": \"test-result\"\r\n  }\r\n}"
 						},
 						"description": "Update requires JSON string, and cannot be used with JSON object."
 					},
@@ -1774,6 +1827,21 @@
 				{
 					"name": "Update Recipe with JSON Object",
 					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"foliage-test\",\r\n  \"name\": \"A Foliage Test Recipe\",\r\n  \"description\": \"Changed my description. Can also make changes to the JSON Object.\",\r\n  \"recipeType\": \"partitioned-workflow\",\r\n  \"inputType\": \"seasonal-acquisition\",\r\n  \"outputType\": \"vector-service\",\r\n  \"properties\": {\r\n    \"image_bands\": \"Pan_MS1_MS2\"\r\n  },\r\n  \"definition\": {\r\n    \"name\": \"Foliage test (full workflow)\",\r\n    \"tasks\": [\r\n      {\r\n        \"name\": \"aop\",\r\n        \"taskType\": \"AOP_Strip_Processor\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"enable_pansharpen\",\r\n            \"value\": \"false\"\r\n          },\r\n          {\r\n            \"name\": \"enable_dra\",\r\n            \"value\": \"false\"\r\n          },\r\n          {\r\n            \"name\": \"bands\",\r\n            \"value\": \"MS\"\r\n          },\r\n          {\r\n            \"name\": \"data\",\r\n            \"value\": \"{raster_path}\"\r\n          },\r\n          {\r\n            \"name\": \"ortho_epsg\",\r\n            \"value\": \"UTM\"\r\n          },\r\n          {\r\n            \"name\": \"ortho_interpolation_type\",\r\n            \"value\": \"Bilinear\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"data\"\r\n          },\r\n          {\r\n            \"name\": \"log\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"AOP_ENVI_HDR\",\r\n        \"name\": \"hdr\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"image\",\r\n            \"source\": \"aop:data\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_SpectralIndex\",\r\n        \"name\": \"ndvi\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"index\",\r\n            \"value\": \"Leaf Area Index\"\r\n          },\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"hdr:output_data\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ColorSliceClassification\",\r\n        \"name\": \"range\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"ndvi:output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"class_ranges\",\r\n            \"value\": \"[4.51, 10.01]\"\r\n          },\r\n          {\r\n            \"name\": \"class_colors\",\r\n            \"value\": \"[0, 255, 0]\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ClassificationSmoothing\",\r\n        \"name\": \"smoothing\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"range:output_raster_uri\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ClassificationAggregation\",\r\n        \"name\": \"aggregation\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"smoothing:output_raster_uri\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ClassificationToShapefile\",\r\n        \"name\": \"shapefile\",\r\n        \"timeout\": 36000,\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"aggregation:output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"export_classes\",\r\n            \"value\": \"4.51 to 10.01\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_vector_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"simplify-polygon:0.0.9\",\r\n        \"name\": \"simplify\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"shapefile\",\r\n            \"source\": \"shapefile:output_vector_uri\"\r\n          },\r\n          {\r\n            \"name\": \"tolerance\",\r\n            \"value\": \"2.0\"\r\n          },\r\n          {\r\n            \"name\": \"min_area\",\r\n            \"value\": \"100.0\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_shapefile\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"reproject\",\r\n        \"taskType\": \"gdal-cli-multiplex\",\r\n        \"timeout\": 36000,\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"data\",\r\n            \"source\": \"simplify:output_shapefile\"\r\n          },\r\n          {\r\n            \"name\": \"command\",\r\n            \"value\": \"mkdir -p $outdir/data; ogr2ogr -f \\\"ESRI Shapefile\\\" -a_srs \\\"EPSG:4326\\\" -t_srs \\\"EPSG:4326\\\" $outdir/data/reprojected.shp $indir/data/*.shp\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"IngestShpToVectorServices\",\r\n        \"name\": \"vector\",\r\n        \"timeout\": 36000,\r\n        \"impersonation_allowed\": true,\r\n        \"containerDescriptors\": [ { \"properties\": { \"domain\": \"t2medium\" } } ],\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"items\",\r\n            \"source\": \"reproject:data\"\r\n          },\r\n          {\r\n            \"name\": \"index\",\r\n            \"value\": \"vector-foliage-{ingest_date}\"\r\n          },\r\n          {\r\n            \"name\": \"shapefileMapping\",\r\n            \"value\": \"vector.crs=EPSG:4326\\nvector.ingestSource=Foliage Detection Testing\\nvector.itemType=Foliage\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"result\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"s3_vector\",\r\n        \"taskType\": \"StageDataToS3\",\r\n        \"timeout\": 36000,\r\n        \"containerDescriptors\": [ { \"properties\": { \"domain\": \"t2medium\" } } ],\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"data\",\r\n            \"source\": \"vector:result\"\r\n          },\r\n          {\r\n            \"name\": \"destination\",\r\n            \"value\": \"s3://{vector_ingest_bucket}/{recipe_id}/{run_id}/{task_name}\"\r\n          }\r\n        ],\r\n        \"outputs\": []\r\n      }\r\n    ]\r\n  }\r\n}"
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/json/:recipeid",
 							"protocol": "https",
@@ -1789,39 +1857,31 @@
 								"json",
 								":recipeid"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "recipeid",
 									"value": "foliage-test"
 								}
 							]
 						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"foliage-test\",\r\n  \"name\": \"A Foliage Test Recipe\",\r\n  \"description\": \"Changed my description. Can also make changes to the JSON Object.\",\r\n  \"recipeType\": \"partitioned-workflow\",\r\n  \"inputType\": \"seasonal-acquisition\",\r\n  \"outputType\": \"vector-service\",\r\n  \"properties\": {\r\n    \"image_bands\": \"Pan_MS1_MS2\"\r\n  },\r\n  \"definition\": {\r\n    \"name\": \"Foliage test (full workflow)\",\r\n    \"tasks\": [\r\n      {\r\n        \"name\": \"aop\",\r\n        \"taskType\": \"AOP_Strip_Processor\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"enable_pansharpen\",\r\n            \"value\": \"false\"\r\n          },\r\n          {\r\n            \"name\": \"enable_dra\",\r\n            \"value\": \"false\"\r\n          },\r\n          {\r\n            \"name\": \"bands\",\r\n            \"value\": \"MS\"\r\n          },\r\n          {\r\n            \"name\": \"data\",\r\n            \"value\": \"{raster_path}\"\r\n          },\r\n          {\r\n            \"name\": \"ortho_epsg\",\r\n            \"value\": \"UTM\"\r\n          },\r\n          {\r\n            \"name\": \"ortho_interpolation_type\",\r\n            \"value\": \"Bilinear\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"data\"\r\n          },\r\n          {\r\n            \"name\": \"log\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"AOP_ENVI_HDR\",\r\n        \"name\": \"hdr\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"image\",\r\n            \"source\": \"aop:data\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_SpectralIndex\",\r\n        \"name\": \"ndvi\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"index\",\r\n            \"value\": \"Leaf Area Index\"\r\n          },\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"hdr:output_data\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ColorSliceClassification\",\r\n        \"name\": \"range\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"ndvi:output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"class_ranges\",\r\n            \"value\": \"[4.51, 10.01]\"\r\n          },\r\n          {\r\n            \"name\": \"class_colors\",\r\n            \"value\": \"[0, 255, 0]\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ClassificationSmoothing\",\r\n        \"name\": \"smoothing\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"range:output_raster_uri\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ClassificationAggregation\",\r\n        \"name\": \"aggregation\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"smoothing:output_raster_uri\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"ENVI_ClassificationToShapefile\",\r\n        \"name\": \"shapefile\",\r\n        \"timeout\": 36000,\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"input_raster\",\r\n            \"source\": \"aggregation:output_raster_uri\"\r\n          },\r\n          {\r\n            \"name\": \"export_classes\",\r\n            \"value\": \"4.51 to 10.01\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_vector_uri\"\r\n          },\r\n          {\r\n            \"name\": \"task_meta_data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"simplify-polygon:0.0.9\",\r\n        \"name\": \"simplify\",\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"shapefile\",\r\n            \"source\": \"shapefile:output_vector_uri\"\r\n          },\r\n          {\r\n            \"name\": \"tolerance\",\r\n            \"value\": \"2.0\"\r\n          },\r\n          {\r\n            \"name\": \"min_area\",\r\n            \"value\": \"100.0\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"output_shapefile\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"reproject\",\r\n        \"taskType\": \"gdal-cli-multiplex\",\r\n        \"timeout\": 36000,\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"data\",\r\n            \"source\": \"simplify:output_shapefile\"\r\n          },\r\n          {\r\n            \"name\": \"command\",\r\n            \"value\": \"mkdir -p $outdir/data; ogr2ogr -f \\\"ESRI Shapefile\\\" -a_srs \\\"EPSG:4326\\\" -t_srs \\\"EPSG:4326\\\" $outdir/data/reprojected.shp $indir/data/*.shp\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"data\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskType\": \"IngestShpToVectorServices\",\r\n        \"name\": \"vector\",\r\n        \"timeout\": 36000,\r\n        \"impersonation_allowed\": true,\r\n        \"containerDescriptors\": [ { \"properties\": { \"domain\": \"t2medium\" } } ],\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"items\",\r\n            \"source\": \"reproject:data\"\r\n          },\r\n          {\r\n            \"name\": \"index\",\r\n            \"value\": \"vector-foliage-{ingest_date}\"\r\n          },\r\n          {\r\n            \"name\": \"shapefileMapping\",\r\n            \"value\": \"vector.crs=EPSG:4326\\nvector.ingestSource=Foliage Detection Testing\\nvector.itemType=Foliage\"\r\n          }\r\n        ],\r\n        \"outputs\": [\r\n          {\r\n            \"name\": \"result\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"s3_vector\",\r\n        \"taskType\": \"StageDataToS3\",\r\n        \"timeout\": 36000,\r\n        \"containerDescriptors\": [ { \"properties\": { \"domain\": \"t2medium\" } } ],\r\n        \"inputs\": [\r\n          {\r\n            \"name\": \"data\",\r\n            \"source\": \"vector:result\"\r\n          },\r\n          {\r\n            \"name\": \"destination\",\r\n            \"value\": \"s3://{vector_ingest_bucket}/{recipe_id}/{run_id}/{task_name}\"\r\n          }\r\n        ],\r\n        \"outputs\": []\r\n      }\r\n    ]\r\n  }\r\n}"
-						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Delete Recipe",
 					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipe/:recipeId",
 							"protocol": "https",
@@ -1836,28 +1896,14 @@
 								"recipe",
 								":recipeId"
 							],
-							"query": [],
 							"variable": [
 								{
-									"description": "",
 									"key": "recipeId",
-									"value": ""
+									"value": "foliage-test"
 								}
 							]
 						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				}
@@ -1870,16 +1916,31 @@
 				{
 					"name": "Runner Blueprints",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/blueprint",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/blueprint",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-recipe-service",
+								"api",
+								"blueprint"
+							]
+						},
 						"description": "will return runner \"blueprints\" (descriptions, params)"
 					},
 					"response": []
@@ -1887,23 +1948,35 @@
 				{
 					"name": "Runner Blueprint Build",
 					"request": {
-						"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/blueprint/build",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"recipe_name\": \"asdfsadfsdf\",\n    \"workflow_id\": \"4542624746854993621\",\n    \"minimum_bands\": \"4\",\n    \"runner\": \"partitioned-workflow.acquisition.vector-service\",\n    \"vector_type\": \"GeoJSON\",\n    \"acquisition_types\": \"DigitalGlobeAcquisition\"\n}"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/blueprint/build",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"answer-factory-recipe-service",
+								"api",
+								"blueprint",
+								"build"
+							]
 						},
 						"description": "Posting a json object of params to that will return a recipe but does not actually insert yet. In the body, runner is required, the rest depend on the params for that specific runner as determined by its blueprint. To actually add the recipe, refer to the standard \"recipe\" api."
 					},
@@ -1914,36 +1987,81 @@
 		{
 			"name": "AnswerFactory Recipe Heartbeat",
 			"request": {
-				"url": "https://vector.geobigdata.io/answer-factory-recipe-service/api/heartbeat",
 				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": "This is a suggestion for a new recipe."
 				},
-				"description": ""
+				"url": {
+					"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/heartbeat",
+					"protocol": "https",
+					"host": [
+						"vector",
+						"geobigdata",
+						"io"
+					],
+					"path": [
+						"answer-factory-recipe-service",
+						"api",
+						"heartbeat"
+					]
+				},
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "AnswerFactory TMS Heartbeat",
 			"request": {
-				"url": "https://vector.geobigdata.io/answer-factory-tms/api/heartbeat",
 				"method": "GET",
 				"header": [],
-				"body": {},
-				"description": ""
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://vector.geobigdata.io/answer-factory-tms/api/heartbeat",
+					"protocol": "https",
+					"host": [
+						"vector",
+						"geobigdata",
+						"io"
+					],
+					"path": [
+						"answer-factory-tms",
+						"api",
+						"heartbeat"
+					]
+				},
+				"description": null
 			},
 			"response": []
 		},
 		{
 			"name": "AnswerFactory Project Heartbeat",
 			"request": {
-				"url": "https://vector.geobigdata.io/answer-factory-project-service/api/heartbeat",
 				"method": "GET",
 				"header": [],
-				"body": {},
-				"description": ""
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://vector.geobigdata.io/answer-factory-project-service/api/heartbeat",
+					"protocol": "https",
+					"host": [
+						"vector",
+						"geobigdata",
+						"io"
+					],
+					"path": [
+						"answer-factory-project-service",
+						"api",
+						"heartbeat"
+					]
+				},
+				"description": null
 			},
 			"response": []
 		}
