@@ -274,8 +274,8 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "Authorization",
-								"value": "Basic {{apikey}}"
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
 							}
 						],
 						"body": {

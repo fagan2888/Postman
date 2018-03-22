@@ -816,7 +816,7 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "Authorization",
+								"key": "Content-Type",
 								"value": "application/x-www-form-urlencoded"
 							}
 						],
