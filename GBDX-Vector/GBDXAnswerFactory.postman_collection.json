@@ -1,8 +1,7 @@
 {
 	"info": {
-		"name": "GBDX AnswerFactory",
 		"_postman_id": "ee4bed78-1f42-43a5-9a21-693a09510fb5",
-		"description": "",
+		"name": "GBDX AnswerFactory",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -42,8 +41,7 @@
 								"feedback",
 								"new_recipe"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				}
@@ -96,8 +94,7 @@
 									"value": "openskynet-aircraft-detection"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -139,8 +136,7 @@
 									"value": "349a5f7e-152d-4182-9807-73ad0c226b2b"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -203,8 +199,7 @@
 									"value": "vector-123456"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -261,8 +256,7 @@
 									"value": "7890"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -324,8 +318,7 @@
 									"value": "foo"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -388,8 +381,7 @@
 									"value": "vector-123456"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -447,8 +439,7 @@
 									"value": "foo"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				}
@@ -512,8 +503,7 @@
 									"value": "7aae27ae-baf6-4e14-adba-60b9c6684464"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -572,8 +562,7 @@
 									"value": "7aae27ae-baf6-4e14-adba-60b9c6684464"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -632,8 +621,7 @@
 									"value": "7aae27ae-baf6-4e14-adba-60b9c6684464"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -676,8 +664,7 @@
 									"value": "ad53cd92-8a5c-46fb-a278-b58e70d78f90"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -725,8 +712,7 @@
 									"value": "openskynet-aircraft-detection"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -854,8 +840,7 @@
 								"token",
 								""
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -885,8 +870,7 @@
 								"v1",
 								"validate_token"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				}
@@ -979,8 +963,7 @@
 								"api",
 								"estimate"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				}
@@ -1069,8 +1052,7 @@
 									"value": "ad53cd92-8a5c-46fb-a278-b58e70d78f90"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1133,8 +1115,7 @@
 									"value": "104973.png"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1177,8 +1158,7 @@
 									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1222,8 +1202,7 @@
 									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1267,8 +1246,7 @@
 									"value": "193dd2df-7b4e-46cc-b180-363b10f230c9"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1326,8 +1304,7 @@
 									"value": "104973.png"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1487,8 +1464,7 @@
 									"value": "d02e3502-bc0f-4633-8394-1209867336be"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1530,8 +1506,7 @@
 									"value": "d02e3502-bc0f-4633-8394-1209867336be"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1573,8 +1548,7 @@
 									"value": "ec57f8d8-7d5f-4a7d-969f-32b154071658"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1623,6 +1597,33 @@
 			"description": null,
 			"item": [
 				{
+					"name": "Recipe Listing",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{environment}}/answer-factory-recipe-service/api/recipes/listing",
+							"host": [
+								"{{environment}}"
+							],
+							"path": [
+								"answer-factory-recipe-service",
+								"api",
+								"recipes",
+								"listing"
+							]
+						},
+						"description": "Return all recipes available in the environment in the form: `recipeID, recipeName`"
+					},
+					"response": []
+				},
+				{
 					"name": "Retrieve all recipes",
 					"request": {
 						"method": "GET",
@@ -1656,8 +1657,7 @@
 							"query": [
 								{
 									"key": "version",
-									"value": "true",
-									"equals": true
+									"value": "true"
 								}
 							]
 						},
@@ -1703,8 +1703,7 @@
 									"value": "extract-lulc-change"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1863,8 +1862,7 @@
 									"value": "foliage-test"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -1902,8 +1900,7 @@
 									"value": "foliage-test"
 								}
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				}
@@ -2006,8 +2003,7 @@
 						"api",
 						"heartbeat"
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		},
@@ -2033,8 +2029,7 @@
 						"api",
 						"heartbeat"
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		},
@@ -2060,8 +2055,7 @@
 						"api",
 						"heartbeat"
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		}

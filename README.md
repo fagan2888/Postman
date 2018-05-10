@@ -5,7 +5,7 @@ A set of example HTTP requests for use with POSTman for hitting the GBDX vector 
 To see the step by step instructions with visuals, see the [Postman Lesson](http://gbdxdocs.digitalglobe.com/docs/lesson-postman-api-requests).
 
 ###Get the Postman Files
-This is the full list of GBDX Vector collections. For collections specific to ESRI Arcmap Add-In, [go here](https://github.com/DigitalGlobe/DGConnect-ESRI). For collections specific to QGIS Plugin, [go here](https://github.com/DigitalGlobe/DGConnect).<br>
+This is the full list of GBDX Vector collections.
 
 * Download the collections zip.<br>
 
