@@ -1,11 +1,936 @@
 {
 	"info": {
-		"name": "GBDX Vector",
 		"_postman_id": "5e64780e-858f-403f-b97a-11d3396d4d06",
+		"name": "GBDX Vector",
 		"description": "API calls associated with the GBDX vector capabilities.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Auth",
+			"description": null,
+			"item": [
+				{
+					"name": "Get user token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://geobigdata.io/auth/v1/oauth/token/",
+							"protocol": "https",
+							"host": [
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"oauth",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://geobigdata.io/auth/v1/validate_token",
+							"protocol": "https",
+							"host": [
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"auth",
+								"v1",
+								"validate_token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hit Service",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/version",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"version"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Index Querying",
+			"description": null,
+			"item": [
+				{
+					"name": "Aggregation in index by shape",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"coordinates\": [\n      [\n        [\n          0,\n          0\n        ],\n        [\n          0,\n          4\n        ],\n        [\n          4,\n          4\n        ],\n        [\n          4,\n          0\n        ],\n        [\n          0,\n          0\n        ]\n      ]\n    ],\n    \"type\": \"Polygon\"\n  }"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/aggregation/:index?aggs=terms:item_type&query=L*&startDate=now-3M&endDate=now&count=10",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"aggregation",
+								":index"
+							],
+							"query": [
+								{
+									"key": "aggs",
+									"value": "terms:item_type"
+								},
+								{
+									"key": "query",
+									"value": "L*"
+								},
+								{
+									"key": "startDate",
+									"value": "now-3M"
+								},
+								{
+									"key": "endDate",
+									"value": "now"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "index",
+									"value": "vector-gbdx*"
+								}
+							]
+						},
+						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
+					},
+					"response": []
+				},
+				{
+					"name": "Aggregation in index by bounding box",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/aggregation/:index?aggs=terms:item_type&query=L*&left=-180&right=180&upper=90&lower=-90&startDate=now-3M&endDate=now&count=10",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"aggregation",
+								":index"
+							],
+							"query": [
+								{
+									"key": "aggs",
+									"value": "terms:item_type"
+								},
+								{
+									"key": "query",
+									"value": "L*"
+								},
+								{
+									"key": "left",
+									"value": "-180"
+								},
+								{
+									"key": "right",
+									"value": "180"
+								},
+								{
+									"key": "upper",
+									"value": "90"
+								},
+								{
+									"key": "lower",
+									"value": "-90"
+								},
+								{
+									"key": "startDate",
+									"value": "now-3M"
+								},
+								{
+									"key": "endDate",
+									"value": "now"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "index",
+									"value": "vector-gbdx*"
+								}
+							]
+						},
+						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
+					},
+					"response": []
+				},
+				{
+					"name": "Get items from index for shape",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"coordinates\": [\n      [\n        [\n          0,\n          0\n        ],\n        [\n          0,\n          4\n        ],\n        [\n          4,\n          4\n        ],\n        [\n          4,\n          0\n        ],\n        [\n          0,\n          0\n        ]\n      ]\n    ],\n    \"type\": \"Polygon\"\n  }"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items?q=L*&sort=item_date:asc",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"items"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "L*"
+								},
+								{
+									"key": "sort",
+									"value": "item_date:asc"
+								}
+							],
+							"variable": [
+								{
+									"key": "index",
+									"value": "vector-gbdx*"
+								}
+							]
+						},
+						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
+					},
+					"response": []
+				},
+				{
+					"name": "Get items from index for query",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items?q=item_type:GBDXCatalogRecord&left=-180&right=180&upper=90&lower=-90&count=10&sort=item_date:asc",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"items"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "item_type:GBDXCatalogRecord"
+								},
+								{
+									"key": "left",
+									"value": "-180"
+								},
+								{
+									"key": "right",
+									"value": "180"
+								},
+								{
+									"key": "upper",
+									"value": "90"
+								},
+								{
+									"key": "lower",
+									"value": "-90"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "item_date:asc"
+								}
+							],
+							"variable": [
+								{
+									"key": "index",
+									"value": "vector-gbdx*"
+								}
+							]
+						},
+						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
+					},
+					"response": []
+				},
+				{
+					"name": "Get item fields from index for query",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items/:fields?q=test&left=0&right=50&upper=50&lower=0&count=100",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"items",
+								":fields"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "test"
+								},
+								{
+									"key": "left",
+									"value": "0"
+								},
+								{
+									"key": "right",
+									"value": "50"
+								},
+								{
+									"key": "upper",
+									"value": "50"
+								},
+								{
+									"key": "lower",
+									"value": "0"
+								},
+								{
+									"key": "count",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "index",
+									"value": "vector-gbdx*"
+								},
+								{
+									"key": "fields",
+									"value": "id,item_date"
+								}
+							]
+						},
+						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
+					},
+					"response": []
+				},
+				{
+					"name": "Initiate paging query from index for query",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/paging?q=S*&left=0&right=50&upper=50&lower=0&ttl=5m&count=100",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"paging"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "S*"
+								},
+								{
+									"key": "left",
+									"value": "0"
+								},
+								{
+									"key": "right",
+									"value": "50"
+								},
+								{
+									"key": "upper",
+									"value": "50"
+								},
+								{
+									"key": "lower",
+									"value": "0"
+								},
+								{
+									"key": "ttl",
+									"value": "5m"
+								},
+								{
+									"key": "count",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "index",
+									"value": "vector-gbdx*"
+								}
+							]
+						},
+						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
+					},
+					"response": []
+				},
+				{
+					"name": "Start Paging Session by index for Shape",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"Polygon\",\r\n    \"coordinates\": [\r\n        [\r\n            [\r\n                -180,90\r\n            ],\r\n            [\r\n                -180,-90\r\n            ],\r\n            [\r\n                180,-90\r\n            ],\r\n            [\r\n                180,90\r\n            ],\r\n            [\r\n                -180,90\r\n            ]\r\n        ]\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/paging?q=building&ttl=5m&count=10",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"index",
+								"query",
+								":index",
+								"paging"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "building"
+								},
+								{
+									"key": "ttl",
+									"value": "5m"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "index",
+									"value": "vector-osm*"
+								}
+							]
+						},
+						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Export Service",
+			"description": "",
+			"item": [
+				{
+					"name": "Check Export Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/export/:request_id/status",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"export",
+								":request_id",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "request_id",
+									"value": "0dffa85af2711000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export zip, non-complex",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"request_type\": [ \"zip\" ],\n\t\"index\": \"vector-gbdx-*-catalog-v2-2*\",\n\t\"query\": { \"query_string\": { \"query\": \"item_type: Sentinel2\" } },\n\t\"geometry\": {\n\t\t\"type\": \"GeometryCollection\",\n\t\t\"geometries\": [\n\t\t\t{ \"type\": \"Polygon\",\n\t\t\t\"coordinates\": [[[1.7,1.9], [1.7,2.5],[2.5,2.5],[2.5,1.9],[1.7,1.9]]]\n\t\t\t},\n\t\t\t{ \"type\": \"MultiPolygon\",\n\t\t\t\"coordinates\": [ [ [ [ -7.629, 33.61 ], [ -7.629, 33.59 ], [ -7.58, 33.59 ], [ -7.59, 33.63 ], [ -7.629, 33.61 ] ] ], [ [ [ -7.55, 33.61 ], [ -7.54, 33.57 ], [ -7.57, 33.54 ], [ -7.58, 33.58 ], [ -7.55, 33.61 ] ] ] ]\n\t\t\t}\n\t\t]\n\t},\n\t\"s3_region\": \"us-east-1\",\n\t\"s3_prefix\": \"test\"\n}"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/export",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"export"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export tile, non-complex",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"request_type\": [ \"tile\" ],\n\t\"index\": \"vector-gbdx-*-catalog-v2-2*\",\n\t\"query\": { \"query_string\": { \"query\": \"item_type: SENTINEL2\" } },\n\t\"geometry\": {\n\t\t\"type\": \"GeometryCollection\",\n\t\t\"geometries\": [\n\t\t\t{ \"type\": \"Polygon\",\n\t\t\t\"coordinates\": [[[1.7,1.9], [1.7,2.5],[2.5,2.5],[2.5,1.9],[1.7,1.9]]]\n\t\t\t},\n\t\t\t{ \"type\": \"MultiPolygon\",\n\t\t\t\"coordinates\": [ [ [ [ -7.629, 33.61 ], [ -7.629, 33.59 ], [ -7.58, 33.59 ], [ -7.59, 33.63 ], [ -7.629, 33.61 ] ] ], [ [ [ -7.55, 33.61 ], [ -7.54, 33.57 ], [ -7.57, 33.54 ], [ -7.58, 33.58 ], [ -7.55, 33.61 ] ] ] ]\n\t\t\t}\n\t\t]\n\t},\n\t\"tile_params\": {\n\t\t\"tileset_name\": \"Tile Test Set\",\n\t\t\"layer_name\": \"Sentinel-2 Imagery Test\",\n\t\t\"tileset_description\": \"Just a test.\",\n\t\t\"min_zoom\": 5,\n\t\t\"max_zoom\": 6,\n\t\t\"simplification\": 8\n\t}\n}"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/export",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"export"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export zip and tile, all optional fields",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"request_type\": [ \"zip\", \"tile\" ],\n\t\"index\": \"vector-gbdx-*-catalog-v2-2*\",\n\t\"query\": { \"query_string\": { \"query\": \"item_type: SENTINEL2\" } },\n\t\"geometry\": {\n\t\t\"type\": \"GeometryCollection\",\n\t\t\"geometries\": [\n\t\t\t{ \"type\": \"Polygon\",\n\t\t\t\"coordinates\": [[[1.7,1.9], [1.7,2.5],[2.5,2.5],[2.5,1.9],[1.7,1.9]]]\n\t\t\t},\n\t\t\t{ \"type\": \"MultiPolygon\",\n\t\t\t\"coordinates\": [ [ [ [ -7.629, 33.61 ], [ -7.629, 33.59 ], [ -7.58, 33.59 ], [ -7.59, 33.63 ], [ -7.629, 33.61 ] ] ], [ [ [ -7.55, 33.61 ], [ -7.54, 33.57 ], [ -7.57, 33.54 ], [ -7.58, 33.58 ], [ -7.55, 33.61 ] ] ] ]\n\t\t\t}\n\t\t]\n\t},\n\t\"s3_bucket\": \"A-Real-Bucket-I-Have-Access-To\",\n\t\"s3_region\": \"us-east-1\",\n\t\"s3_prefix\": \"test\",\n\t\"callbacks\": [\n\t\t{\n\t\t\t\"url\": \"http://my.url.io/receiver\",\n\t\t\t\"headers\": {\n\t\t\t\t\"Authorization\": \"my token\"\n\t\t\t}\n\t\t}\n\t],\n\t\"tile_params\": {\n\t\t\"tileset_name\": \"Tile Test Set\",\n\t\t\"layer_name\": \"Sentinel-2 Imagery Test\",\n\t\t\"tileset_description\": \"Just a test.\",\n\t\t\"min_zoom\": 5,\n\t\t\"max_zoom\": 6,\n\t\t\"simplification\": 8\n\t}\n}"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/export",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Write Vector",
+			"description": null,
+			"item": [
+				{
+					"name": "Add Multiple Vectors",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [1.0,1.0]\n        },\n        \"properties\": {\n            \"text\" : \"elementary school\",\n            \"name\" : \"Mothra\",\n            \"item_type\" : \"School\",\n            \"ingest_source\" : \"REST API test source\",\n            \"attributes\" : {\n               \"latitude\" : 1,\n               \"institute.founded\" : \"2015-07-17\",\n               \"mascot \" : \"moth\"\n            }\n        }\n  }\n  ,\n  {\n    \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [0.0,0.0]\n        },\n        \"properties\": {\n            \"text\" : \"Swim Team\",\n            \"name\" : \"Ocean Dwellers\",\n            \"item_type\" : \"Sports Facility\",\n            \"attributes\" : {\n               \"latitude\" : 0,\n               \"longitude\" : 0\n            }\n        }\n  }\n  ,\n  {\n    \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [1.0,0.0]\n        },\n        \"properties\": {\n            \"text\" : \"The Lost City of Atlanta\",\n            \"name\" : \"Atlanta\",\n            \"item_type\" : \"Ruins\",\n            \"ingest_source\" : \"REST API test source\",\n            \"attributes\" : {\n               \"found.by\" : \"Sir Dolphinicus III\"\n            }\n        }\n  }\n]\n"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/vectors/",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"vectors",
+								""
+							]
+						},
+						"description": "1.\tSubmit a POST request to retrieve InsightCloud UVI information for adding multiple vectors."
+					},
+					"response": []
+				},
+				{
+					"name": "Add Single Vector",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [0.0,1.0]\n        },\n        \"properties\": {\n            \"text\" : \"Animation Infestation\",\n            \"name\" : \"Dot\",\n            \"item_type\" : [\"Cartoon\",\"Animaniac\"],\n            \"ingest_source\" : \"REST API test source\",\n            \"access\" : {\n            \"users\" : [ \"_ALL_\" ],\n            \"groups\" : [ \"_ALL_\" ]\n            },\n            \"attributes\" : {\n               \"name\" : \"Dot\",\n               \"species\" : \"Animaniac\",\n               \"related to\" : \"Wacko and Yacko\",\n               \"skills1\" : \"humor\",\n               \"skills2\" : \"insanity\",\n               \"progenator\" : \"Tom Ruegger\"\n            }\n        }\n}\n"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/vector/",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"vector",
+								""
+							]
+						},
+						"description": "1.\tSubmit a POST request to retrieve InsightCloud UVI information for adding a single vector. Includes in properties both item_type \"hierarchy\" string array and access to restrict user interactions with item."
+					},
+					"response": []
+				},
+				{
+					"name": "Updating a  Vector",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Delete this sentence and replace {index} and {id} in the url with an index and id string returned from either Add Multiple Vectors or Add Single Vector.\n{\n    \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [1.0,1.0]\n        },\n        \"properties\": {\n            \"text\" : \"elementary school\",\n            \"name\" : \"Godzilla\",\n            \"item_type\" : \"School\",\n            \"ingest_source\" : \"REST API test source\",\n            \"attributes\" : {\n               \"latitude\" : 1,\n               \"institute.founded\" : \"2015-07-17\",\n               \"mascot \" : \"giant lizard\",\n               \"name\" : \"Godzilla\"\n            }\n        }\n}"
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/vector/{index}/{id}",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"vector",
+								"{index}",
+								"{id}"
+							]
+						},
+						"description": "1.\tSubmit a PUT request to retrieve InsightCloud UVI information for updating a vector."
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieving a Vector",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/vector/vector-web-s/ebe3e7f5-da6d-4d87-937e-4f1be8e5861d",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"vector",
+								"vector-web-s",
+								"ebe3e7f5-da6d-4d87-937e-4f1be8e5861d"
+							]
+						},
+						"description": "Submit a GET request to retrieve InsightCloud UVI information for retrieving a vector."
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting a Vector",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Delete this sentence and replace {index} and {id} in the url with an index and id string returned from either Add Multiple Vectors or Add Single Vector."
+						},
+						"url": {
+							"raw": "https://vector.geobigdata.io/insight-vector/api/vector/{index}/{id}",
+							"protocol": "https",
+							"host": [
+								"vector",
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"insight-vector",
+								"api",
+								"vector",
+								"{index}",
+								"{id}"
+							]
+						},
+						"description": "Submit a DELETE request to retrieve InsightCloud UVI information for deleting a vector."
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "Aggregations",
 			"description": null,
@@ -259,158 +1184,6 @@
 							]
 						},
 						"description": "Aggregation query with arbitrary geometry (instead of bounding box)."
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Auth",
-			"description": null,
-			"item": [
-				{
-					"name": "Get user token",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "grant_type",
-									"value": "password",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://geobigdata.io/auth/v1/oauth/token/",
-							"protocol": "https",
-							"host": [
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"auth",
-								"v1",
-								"oauth",
-								"token",
-								""
-							]
-						},
-						"description": null
-					},
-					"response": []
-				},
-				{
-					"name": "Validate Token",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://geobigdata.io/auth/v1/validate_token",
-							"protocol": "https",
-							"host": [
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"auth",
-								"v1",
-								"validate_token"
-							]
-						},
-						"description": null
-					},
-					"response": []
-				},
-				{
-					"name": "Hit Service",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/version",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"version"
-							]
-						},
-						"description": null
-					},
-					"response": []
-				},
-				{
-					"name": "CurrentUserStatus",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/accounts/currentuser/status",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"accounts",
-								"currentuser",
-								"status"
-							]
-						},
-						"description": "Lists the current status of the user, including things like the user's current role, download limits, current usage info, etc."
 					},
 					"response": []
 				}
@@ -2042,511 +2815,6 @@
 			]
 		},
 		{
-			"name": "VS Index Querying",
-			"description": null,
-			"item": [
-				{
-					"name": "Aggregation in index by shape",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"coordinates\": [\n      [\n        [\n          0,\n          0\n        ],\n        [\n          0,\n          4\n        ],\n        [\n          4,\n          4\n        ],\n        [\n          4,\n          0\n        ],\n        [\n          0,\n          0\n        ]\n      ]\n    ],\n    \"type\": \"Polygon\"\n  }"
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/index/aggregation/:index?aggs=terms:item_type&query=L*&startDate=now-3M&endDate=now&count=10",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"index",
-								"aggregation",
-								":index"
-							],
-							"query": [
-								{
-									"key": "aggs",
-									"value": "terms:item_type",
-									"equals": true
-								},
-								{
-									"key": "query",
-									"value": "L*",
-									"equals": true
-								},
-								{
-									"key": "startDate",
-									"value": "now-3M",
-									"equals": true
-								},
-								{
-									"key": "endDate",
-									"value": "now",
-									"equals": true
-								},
-								{
-									"key": "count",
-									"value": "10",
-									"equals": true
-								}
-							],
-							"variable": [
-								{
-									"key": "index",
-									"value": "vector-gbdx*"
-								}
-							]
-						},
-						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
-					},
-					"response": []
-				},
-				{
-					"name": "Aggregation in index by bounding box",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/index/aggregation/:index?aggs=terms:item_type&query=L*&left=-180&right=180&upper=90&lower=-90&startDate=now-3M&endDate=now&count=10",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"index",
-								"aggregation",
-								":index"
-							],
-							"query": [
-								{
-									"key": "aggs",
-									"value": "terms:item_type",
-									"equals": true
-								},
-								{
-									"key": "query",
-									"value": "L*",
-									"equals": true
-								},
-								{
-									"key": "left",
-									"value": "-180",
-									"equals": true
-								},
-								{
-									"key": "right",
-									"value": "180",
-									"equals": true
-								},
-								{
-									"key": "upper",
-									"value": "90",
-									"equals": true
-								},
-								{
-									"key": "lower",
-									"value": "-90",
-									"equals": true
-								},
-								{
-									"key": "startDate",
-									"value": "now-3M",
-									"equals": true
-								},
-								{
-									"key": "endDate",
-									"value": "now",
-									"equals": true
-								},
-								{
-									"key": "count",
-									"value": "10",
-									"equals": true
-								}
-							],
-							"variable": [
-								{
-									"key": "index",
-									"value": "vector-gbdx*"
-								}
-							]
-						},
-						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
-					},
-					"response": []
-				},
-				{
-					"name": "Get items from index for shape",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"coordinates\": [\n      [\n        [\n          0,\n          0\n        ],\n        [\n          0,\n          4\n        ],\n        [\n          4,\n          4\n        ],\n        [\n          4,\n          0\n        ],\n        [\n          0,\n          0\n        ]\n      ]\n    ],\n    \"type\": \"Polygon\"\n  }"
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items?q=L*&sort=item_date:asc",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"index",
-								"query",
-								":index",
-								"items"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "L*",
-									"equals": true
-								},
-								{
-									"key": "sort",
-									"value": "item_date:asc",
-									"equals": true
-								}
-							],
-							"variable": [
-								{
-									"key": "index",
-									"value": "vector-gbdx*"
-								}
-							]
-						},
-						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
-					},
-					"response": []
-				},
-				{
-					"name": "Get items from index for query",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items?q=item_type:GBDXCatalogRecord&left=-180&right=180&upper=90&lower=-90&count=10&sort=item_date:asc",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"index",
-								"query",
-								":index",
-								"items"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "item_type:GBDXCatalogRecord",
-									"equals": true
-								},
-								{
-									"key": "left",
-									"value": "-180",
-									"equals": true
-								},
-								{
-									"key": "right",
-									"value": "180",
-									"equals": true
-								},
-								{
-									"key": "upper",
-									"value": "90",
-									"equals": true
-								},
-								{
-									"key": "lower",
-									"value": "-90",
-									"equals": true
-								},
-								{
-									"key": "count",
-									"value": "10",
-									"equals": true
-								},
-								{
-									"key": "sort",
-									"value": "item_date:asc",
-									"equals": true
-								}
-							],
-							"variable": [
-								{
-									"key": "index",
-									"value": "vector-gbdx*"
-								}
-							]
-						},
-						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
-					},
-					"response": []
-				},
-				{
-					"name": "Get item fields from index for query",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/items/:fields?q=test&left=0&right=50&upper=50&lower=0&count=100",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"index",
-								"query",
-								":index",
-								"items",
-								":fields"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "test",
-									"equals": true
-								},
-								{
-									"key": "left",
-									"value": "0",
-									"equals": true
-								},
-								{
-									"key": "right",
-									"value": "50",
-									"equals": true
-								},
-								{
-									"key": "upper",
-									"value": "50",
-									"equals": true
-								},
-								{
-									"key": "lower",
-									"value": "0",
-									"equals": true
-								},
-								{
-									"key": "count",
-									"value": "100",
-									"equals": true
-								}
-							],
-							"variable": [
-								{
-									"key": "index",
-									"value": "vector-gbdx*"
-								},
-								{
-									"key": "fields",
-									"value": "id,item_date"
-								}
-							]
-						},
-						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
-					},
-					"response": []
-				},
-				{
-					"name": "Initiate paging query from index for query",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/paging?q=S*&left=0&right=50&upper=50&lower=0&ttl=5m&count=100",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"index",
-								"query",
-								":index",
-								"paging"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "S*",
-									"equals": true
-								},
-								{
-									"key": "left",
-									"value": "0",
-									"equals": true
-								},
-								{
-									"key": "right",
-									"value": "50",
-									"equals": true
-								},
-								{
-									"key": "upper",
-									"value": "50",
-									"equals": true
-								},
-								{
-									"key": "lower",
-									"value": "0",
-									"equals": true
-								},
-								{
-									"key": "ttl",
-									"value": "5m",
-									"equals": true
-								},
-								{
-									"key": "count",
-									"value": "100",
-									"equals": true
-								}
-							],
-							"variable": [
-								{
-									"key": "index",
-									"value": "vector-gbdx*"
-								}
-							]
-						},
-						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
-					},
-					"response": []
-				},
-				{
-					"name": "Start Paging Session by index for Shape",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Polygon\",\r\n    \"coordinates\": [\r\n        [\r\n            [\r\n                -180,90\r\n            ],\r\n            [\r\n                -180,-90\r\n            ],\r\n            [\r\n                180,-90\r\n            ],\r\n            [\r\n                180,90\r\n            ],\r\n            [\r\n                -180,90\r\n            ]\r\n        ]\r\n    ]\r\n}"
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/index/query/:index/paging?q=building&ttl=5m&count=10",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"index",
-								"query",
-								":index",
-								"paging"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "building",
-									"equals": true
-								},
-								{
-									"key": "ttl",
-									"value": "5m",
-									"equals": true
-								},
-								{
-									"key": "count",
-									"value": "10",
-									"equals": true
-								}
-							],
-							"variable": [
-								{
-									"key": "index",
-									"value": "vector-osm*"
-								}
-							]
-						},
-						"description": "Indicies of note:\n\n*All User Subscription indicies:*\n\nCatalog: `vector-gbdx-alpha-catalog-v2*`\n\nOSM: `vector-osm-*`\n\nGDELT: `vector-gdelt-*`\n\nGazetteer: `vector-gazetteer-*`\n\nACLED: `vector-acled-*`\n\nTwitter: `vector-sma-twitter*`\n\nNatural Earth (administrative boundaries): `vector-natural-earth`\n\nResults from recipe runs: `vector-workflow*`\n\n\n_Note: The * at the end of vector indicies is because certain indicies are also broken up further by date. Instead of querying only the specific date of a specific index, the * allows for all dates over the index._"
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "VS Paging Query Term Wrkflw",
 			"description": null,
 			"item": [
@@ -4052,200 +4320,6 @@
 			]
 		},
 		{
-			"name": "Write Vector",
-			"description": null,
-			"item": [
-				{
-					"name": "Add Multiple Vectors",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n  {\n    \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [1.0,1.0]\n        },\n        \"properties\": {\n            \"text\" : \"elementary school\",\n            \"name\" : \"Mothra\",\n            \"item_type\" : \"School\",\n            \"ingest_source\" : \"REST API test source\",\n            \"attributes\" : {\n               \"latitude\" : 1,\n               \"institute.founded\" : \"2015-07-17\",\n               \"mascot \" : \"moth\"\n            }\n        }\n  }\n  ,\n  {\n    \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [0.0,0.0]\n        },\n        \"properties\": {\n            \"text\" : \"Swim Team\",\n            \"name\" : \"Ocean Dwellers\",\n            \"item_type\" : \"Sports Facility\",\n            \"attributes\" : {\n               \"latitude\" : 0,\n               \"longitude\" : 0\n            }\n        }\n  }\n  ,\n  {\n    \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [1.0,0.0]\n        },\n        \"properties\": {\n            \"text\" : \"The Lost City of Atlanta\",\n            \"name\" : \"Atlanta\",\n            \"item_type\" : \"Ruins\",\n            \"ingest_source\" : \"REST API test source\",\n            \"attributes\" : {\n               \"found.by\" : \"Sir Dolphinicus III\"\n            }\n        }\n  }\n]\n"
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/vectors/",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"vectors",
-								""
-							]
-						},
-						"description": "1.\tSubmit a POST request to retrieve InsightCloud UVI information for adding multiple vectors."
-					},
-					"response": []
-				},
-				{
-					"name": "Add Single Vector",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [0.0,1.0]\n        },\n        \"properties\": {\n            \"text\" : \"Animation Infestation\",\n            \"name\" : \"Dot\",\n            \"item_type\" : [\"Cartoon\",\"Animaniac\"],\n            \"ingest_source\" : \"REST API test source\",\n            \"access\" : {\n            \"users\" : [ \"_ALL_\" ],\n            \"groups\" : [ \"_ALL_\" ]\n            },\n            \"attributes\" : {\n               \"name\" : \"Dot\",\n               \"species\" : \"Animaniac\",\n               \"related to\" : \"Wacko and Yacko\",\n               \"skills1\" : \"humor\",\n               \"skills2\" : \"insanity\",\n               \"progenator\" : \"Tom Ruegger\"\n            }\n        }\n}\n"
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/vector/",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"vector",
-								""
-							]
-						},
-						"description": "1.\tSubmit a POST request to retrieve InsightCloud UVI information for adding a single vector. Includes in properties both item_type \"hierarchy\" string array and access to restrict user interactions with item."
-					},
-					"response": []
-				},
-				{
-					"name": "Updating a  Vector",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "Delete this sentence and replace {index} and {id} in the url with an index and id string returned from either Add Multiple Vectors or Add Single Vector.\n{\n    \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [1.0,1.0]\n        },\n        \"properties\": {\n            \"text\" : \"elementary school\",\n            \"name\" : \"Godzilla\",\n            \"item_type\" : \"School\",\n            \"ingest_source\" : \"REST API test source\",\n            \"attributes\" : {\n               \"latitude\" : 1,\n               \"institute.founded\" : \"2015-07-17\",\n               \"mascot \" : \"giant lizard\",\n               \"name\" : \"Godzilla\"\n            }\n        }\n}"
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/vector/{index}/{id}",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"vector",
-								"{index}",
-								"{id}"
-							]
-						},
-						"description": "1.\tSubmit a PUT request to retrieve InsightCloud UVI information for updating a vector."
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieving a Vector",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/vector/vector-web-s/ebe3e7f5-da6d-4d87-937e-4f1be8e5861d",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"vector",
-								"vector-web-s",
-								"ebe3e7f5-da6d-4d87-937e-4f1be8e5861d"
-							]
-						},
-						"description": "Submit a GET request to retrieve InsightCloud UVI information for retrieving a vector."
-					},
-					"response": []
-				},
-				{
-					"name": "Deleting a Vector",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "Delete this sentence and replace {index} and {id} in the url with an index and id string returned from either Add Multiple Vectors or Add Single Vector."
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/insight-vector/api/vector/{index}/{id}",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"insight-vector",
-								"api",
-								"vector",
-								"{index}",
-								"{id}"
-							]
-						},
-						"description": "Submit a DELETE request to retrieve InsightCloud UVI information for deleting a vector."
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Vector Heartbeat",
 			"request": {
 				"method": "GET",
@@ -4264,8 +4338,7 @@
 						"api",
 						"heartbeat"
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		}
