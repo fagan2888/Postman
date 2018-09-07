@@ -7,7 +7,6 @@
 	"item": [
 		{
 			"name": "AnswerFactory Feedback",
-			"description": null,
 			"item": [
 				{
 					"name": "Send new recipe suggestion",
@@ -49,7 +48,6 @@
 		},
 		{
 			"name": "AnswerFactory Tags",
-			"description": null,
 			"item": [
 				{
 					"name": "Retrieve tag list for project and recipe",
@@ -447,7 +445,6 @@
 		},
 		{
 			"name": "Answers",
-			"description": null,
 			"item": [
 				{
 					"name": "Retrieve Answer",
@@ -794,7 +791,6 @@
 		},
 		{
 			"name": "Auth",
-			"description": null,
 			"item": [
 				{
 					"name": "Get user token",
@@ -878,7 +874,6 @@
 		},
 		{
 			"name": "Estimates",
-			"description": null,
 			"item": [
 				{
 					"name": "Retrieve estimate for existing project",
@@ -970,393 +965,7 @@
 			]
 		},
 		{
-			"name": "IDAHO TMS",
-			"description": null,
-			"item": [
-				{
-					"name": "Retrieve Project IDAHO Server Capabilities",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"answer-factory-tms",
-								"tms",
-								"idahoImage",
-								":projectId"
-							],
-							"variable": [
-								{
-									"key": "projectId",
-									"value": "ad53cd92-8a5c-46fb-a278-b58e70d78f90"
-								}
-							]
-						},
-						"description": "Lists all projects associated with the current user's group account."
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Project IDAHO Services Root",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/services/root.xml",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"answer-factory-tms",
-								"tms",
-								"idahoImage",
-								":projectId",
-								"services",
-								"root.xml"
-							],
-							"variable": [
-								{
-									"key": "projectId",
-									"value": "ad53cd92-8a5c-46fb-a278-b58e70d78f90"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve IDAHO Tile",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							},
-							{
-								"key": "Accept",
-								"value": "image/png"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory/tms/idahoImage/:projectId/1.0.0/:idahoId/:zoomLevel/:tileX/:tileYext",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"answer-factory",
-								"tms",
-								"idahoImage",
-								":projectId",
-								"1.0.0",
-								":idahoId",
-								":zoomLevel",
-								":tileX",
-								":tileYext"
-							],
-							"variable": [
-								{
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
-								},
-								{
-									"key": "idahoId",
-									"value": "193dd2df-7b4e-46cc-b180-363b10f230c9"
-								},
-								{
-									"key": "zoomLevel",
-									"value": "18"
-								},
-								{
-									"key": "tileX",
-									"value": "144647"
-								},
-								{
-									"key": "tileYext",
-									"value": "104973.png"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve project IDAHO Tile Map Service",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/1.0.0",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"answer-factory-tms",
-								"tms",
-								"idahoImage",
-								":projectId",
-								"1.0.0"
-							],
-							"variable": [
-								{
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve IDAHO Tile Map Service Resource",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/services/tilemapservice.xml",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"answer-factory-tms",
-								"tms",
-								"idahoImage",
-								":projectId",
-								"services",
-								"tilemapservice.xml"
-							],
-							"variable": [
-								{
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve IDAHO Tile Set Service",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/idahoImage/:projectId/1.0.0/:idahoId",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"answer-factory-tms",
-								"tms",
-								"idahoImage",
-								":projectId",
-								"1.0.0",
-								":idahoId"
-							],
-							"variable": [
-								{
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
-								},
-								{
-									"key": "idahoId",
-									"value": "193dd2df-7b4e-46cc-b180-363b10f230c9"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Project Tile",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							},
-							{
-								"key": "Accept",
-								"value": "image/png"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory/tms/idahoImage/:projectId/1.0.0/:zoomLevel/:tileX/:tileYext",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"answer-factory",
-								"tms",
-								"idahoImage",
-								":projectId",
-								"1.0.0",
-								":zoomLevel",
-								":tileX",
-								":tileYext"
-							],
-							"variable": [
-								{
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
-								},
-								{
-									"key": "zoomLevel",
-									"value": "18"
-								},
-								{
-									"key": "tileX",
-									"value": "144647"
-								},
-								{
-									"key": "tileYext",
-									"value": "104973.png"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Project Tile Set Service",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://vector.geobigdata.io/answer-factory-tms/tms/project/1.0.0/:projectId",
-							"protocol": "https",
-							"host": [
-								"vector",
-								"geobigdata",
-								"io"
-							],
-							"path": [
-								"answer-factory-tms",
-								"tms",
-								"project",
-								"1.0.0",
-								":projectId"
-							],
-							"variable": [
-								{
-									"key": "projectId",
-									"value": "ea8a6715-27da-4f55-aa0f-92543344b45f"
-								}
-							]
-						},
-						"description": "Lists all projects associated with the current user's group account."
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Project",
-			"description": null,
 			"item": [
 				{
 					"name": "Retrieve List of Projects",
@@ -1594,7 +1203,6 @@
 		},
 		{
 			"name": "Recipe",
-			"description": null,
 			"item": [
 				{
 					"name": "Recipe Listing",
@@ -1608,9 +1216,12 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "{{environment}}/answer-factory-recipe-service/api/recipes/listing",
+							"raw": "https://vector.geobigdata.io/answer-factory-recipe-service/api/recipes/listing",
+							"protocol": "https",
 							"host": [
-								"{{environment}}"
+								"vector",
+								"geobigdata",
+								"io"
 							],
 							"path": [
 								"answer-factory-recipe-service",
@@ -1908,7 +1519,6 @@
 		},
 		{
 			"name": "Recipe Builder",
-			"description": "Specific to recipe builder; submission uses standard recipe calls.",
 			"item": [
 				{
 					"name": "Runner Blueprints",
@@ -1979,7 +1589,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Specific to recipe builder; submission uses standard recipe calls."
 		},
 		{
 			"name": "AnswerFactory Recipe Heartbeat",
